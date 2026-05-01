@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>哈布斯堡家族关系图</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <!-- ==================== Homepage ==================== -->
+  <div id="home-page">
+    <canvas id="star-canvas"></canvas>
+    <div class="home-content">
+      <h1 class="home-title">Habsburg<br />Constellations</h1>
+      <p class="home-subtitle">追溯哈布斯堡王朝七百年的血脉与联姻</p>
+      <p class="home-desc">
+        以星图布局呈现哈布斯堡家族自中世纪至近代的完整谱系网络。
+        每一位人物如星辰悬于时空坐标之上，父系传承与姻亲联盟交织成网。
+        点击任意节点即可探索血脉关联，搜寻跨越世纪的家族纽带。
+      </p>
+      <div class="home-stats">
+        <div class="stat-card">
+          <div class="stat-number" id="stat-people">757</div>
+          <div class="stat-label">位人物</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="stat-edges">1,386</div>
+          <div class="stat-label">条关系</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="stat-years">700</div>
+          <div class="stat-label">年历史</div>
+        </div>
+      </div>
+      <div class="home-buttons">
+        <button id="explore-btn" class="explore-btn">探索星图</button>
+        <button id="history-btn" class="history-btn">历史资料（开发中）</button>
+        <button id="characters-btn" class="characters-btn">探索人物</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== History page ==================== -->
+  <div id="history-page">
+    <button id="history-back-btn">← 返回主页</button>
+    <div id="history-layout">
+      <div id="history-sidebar">
+        <div class="hs-title">目录</div>
+        <div id="history-tree"></div>
+      </div>
+      <div id="history-main">
+        <div id="history-breadcrumb"></div>
+        <div id="history-file-list">
+          <div class="hfl-empty">请从左侧目录选择一个分类</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Characters list page ==================== -->
+  <div id="characters-page">
+    <button id="characters-back-btn">← 返回主页</button>
+    <div id="characters-grid"></div>
+  </div>
+
+  <!-- ==================== Character detail page ==================== -->
+  <div id="character-detail-page">
+    <button id="detail-back-btn">← 返回人物列表</button>
+    <div id="detail-layout">
+      <div id="detail-left">
+        <svg id="detail-relation-svg"></svg>
+      </div>
+      <div id="detail-center">
+        <div id="detail-portrait">
+          <img id="detail-img" src="" alt="" />
+        </div>
+        <div id="detail-info">
+          <div id="detail-name-zh"></div>
+          <div id="detail-name-en"></div>
+          <div id="detail-years"></div>
+          <div id="detail-dynasty"></div>
+          <div id="detail-tags"></div>
+        </div>
+      </div>
+      <div id="detail-right">
+        <div id="detail-desc"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== Chart page ==================== -->
+  <div id="chart-page">
+    <button id="back-home-btn">← 返回主页</button>
+
+    <div id="loader">
+      <svg class="spinner" viewBox="0 0 50 50">
+        <circle cx="25" cy="25" r="20" />
+      </svg>
+      <p>正在计算布局，请稍候...</p>
+    </div>
+
+    <!-- Language toggle -->
+    <div id="lang-toggle">
+      <button id="lang-en" class="lang-btn active">EN</button>
+      <button id="lang-zh" class="lang-btn">中文</button>
+    </div>
+
+    <!-- Search -->
+    <div id="search-box">
+      <input id="search-input" type="text" placeholder="搜索人物..." spellcheck="false" />
+      <div id="search-results"></div>
+    </div>
+
+    <!-- Filter panel -->
+    <div id="filter-panel">
+      <div class="fp-title">筛选</div>
+      <label class="fp-row"><input type="checkbox" data-role="habsburg" checked /> <span>哈布斯堡主线</span></label>
+      <label class="fp-row"><input type="checkbox" data-role="consort" checked /> <span>配偶</span></label>
+      <label class="fp-row"><input type="checkbox" data-role="relative" checked /> <span>关联亲属</span></label>
+      <div class="fp-divider"></div>
+      <div class="fp-label">年代范围</div>
+      <div class="fp-sliders">
+        <input type="range" id="year-min" />
+        <input type="range" id="year-max" />
+      </div>
+      <div class="fp-year-labels">
+        <span id="year-min-label">1000</span>
+        <span id="year-max-label">2000</span>
+      </div>
+    </div>
+
+    <!-- Path panel -->
+    <div id="path-panel">
+      <div id="path-content"></div>
+    </div>
+
+    <!-- Info panel -->
+    <div id="info-panel">
+      <button id="info-close">&times;</button>
+      <div id="info-header">
+        <div id="info-name-zh"></div>
+        <div id="info-name-en"></div>
+        <div id="info-meta"></div>
+      </div>
+      <div id="info-body"></div>
+      <div id="info-footer">
+        <a id="info-wiki" href="#" target="_blank" rel="noopener">查看维基百科</a>
+      </div>
+    </div>
+
+    <!-- Hint -->
+    <div id="hint">点击人物选中，再点另一人查找关系路径 · ESC 清除</div>
+
+    <div id="container">
+      <canvas id="edge-canvas"></canvas>
+      <svg id="node-svg"></svg>
+    </div>
+    <div id="tooltip"></div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

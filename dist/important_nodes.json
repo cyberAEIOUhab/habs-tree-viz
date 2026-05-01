@@ -1,0 +1,518 @@
+[
+  {
+    "id": "Rudolf_I_of_Germany",
+    "name": "Rudolf I",
+    "name_zh": "鲁道夫一世",
+    "born": 1218,
+    "died": 1291,
+    "title": "",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "重要君主"
+    ]
+  },
+  {
+    "id": "Rudolf_IV,_Duke_of_Austria",
+    "name": "Rudolf IV",
+    "name_zh": "鲁道夫四世",
+    "born": 1339,
+    "died": 1365,
+    "title": "",
+    "dynasty": "",
+    "role": "consort",
+    "sex": "male",
+    "importance": [
+      "哈布斯堡关键人物"
+    ]
+  },
+  {
+    "id": "Ernest,_Duke_of_Austria",
+    "name": "Ernest I",
+    "name_zh": "恩斯特一世",
+    "born": 1377,
+    "died": 1424,
+    "title": "",
+    "dynasty": "",
+    "role": "consort",
+    "sex": "male",
+    "importance": [
+      "哈布斯堡关键人物"
+    ]
+  },
+  {
+    "id": "Albert_II_of_Germany",
+    "name": "Albert the Magnanimous",
+    "name_zh": "慷慨者阿尔伯特",
+    "born": 1397,
+    "died": 1439,
+    "title": "",
+    "dynasty": "",
+    "role": "relative",
+    "sex": "male",
+    "importance": [
+      "哈布斯堡关键人物"
+    ]
+  },
+  {
+    "id": "Frederick_III,_Holy_Roman_Emperor",
+    "name": "Frederick III",
+    "name_zh": "腓特烈三世",
+    "born": 1415,
+    "died": 1493,
+    "title": "",
+    "dynasty": "",
+    "role": "consort",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (by ID)"
+    ]
+  },
+  {
+    "id": "Maximilian_I,_Holy_Roman_Emperor",
+    "name": "Maximilian I",
+    "name_zh": "马克西米利安一世",
+    "born": 1459,
+    "died": 1519,
+    "title": "Imperator Romanorum",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (Imperator Romanorum)",
+      "神圣罗马皇帝 (by ID)"
+    ]
+  },
+  {
+    "id": "Charles_V,_Holy_Roman_Emperor",
+    "name": "Charles V",
+    "name_zh": "查理五世",
+    "born": 1500,
+    "died": 1558,
+    "title": "Imperator Romanorum",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (Imperator Romanorum)",
+      "神圣罗马皇帝 (by ID)",
+      "有肖像 (Charles_V,_Holy_Roman_Emperor.jpg)"
+    ]
+  },
+  {
+    "id": "Maximilian_II,_Holy_Roman_Emperor",
+    "name": "Maximilian II",
+    "name_zh": "马克西米利安二世",
+    "born": 1527,
+    "died": 1576,
+    "title": "Imperator Romanorum",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (Imperator Romanorum)",
+      "神圣罗马皇帝 (by ID)"
+    ]
+  },
+  {
+    "id": "Philip_II_of_Spain",
+    "name": "Philip II",
+    "name_zh": "腓力二世",
+    "born": 1527,
+    "died": 1598,
+    "title": "",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "重要君主"
+    ]
+  },
+  {
+    "id": "Charles_II,_Archduke_of_Austria",
+    "name": "Charles II",
+    "name_zh": "卡尔二世",
+    "born": 1540,
+    "died": 1590,
+    "title": "",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "哈布斯堡关键人物"
+    ]
+  },
+  {
+    "id": "Rudolf_II,_Holy_Roman_Emperor",
+    "name": "Rudolf II",
+    "name_zh": "鲁道夫二世",
+    "born": 1552,
+    "died": 1612,
+    "title": "Imperator Romanorum",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (Imperator Romanorum)",
+      "神圣罗马皇帝 (by ID)"
+    ]
+  },
+  {
+    "id": "Matthias,_Holy_Roman_Emperor",
+    "name": "Matthias",
+    "name_zh": "马蒂亚斯",
+    "born": 1557,
+    "died": 1619,
+    "title": "Imperator Romanorum",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (Imperator Romanorum)",
+      "神圣罗马皇帝 (by ID)"
+    ]
+  },
+  {
+    "id": "Ferdinand_II,_Holy_Roman_Emperor",
+    "name": "Ferdinand II",
+    "name_zh": "斐迪南二世",
+    "born": 1578,
+    "died": 1637,
+    "title": "Imperator Romanorum",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (Imperator Romanorum)",
+      "神圣罗马皇帝 (by ID)"
+    ]
+  },
+  {
+    "id": "Philip_III_of_Spain",
+    "name": "Philip III",
+    "name_zh": "腓力三世",
+    "born": 1578,
+    "died": 1621,
+    "title": "",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "重要君主"
+    ]
+  },
+  {
+    "id": "Philip_IV_of_Spain",
+    "name": "Philip IV",
+    "name_zh": "腓力四世",
+    "born": 1605,
+    "died": 1665,
+    "title": "",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "重要君主"
+    ]
+  },
+  {
+    "id": "Ferdinand_III,_Holy_Roman_Emperor",
+    "name": "Ferdinand III",
+    "name_zh": "斐迪南三世",
+    "born": 1608,
+    "died": 1657,
+    "title": "",
+    "dynasty": "",
+    "role": "consort",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (by ID)"
+    ]
+  },
+  {
+    "id": "Leopold_I,_Holy_Roman_Emperor",
+    "name": "Leopold I",
+    "name_zh": "利奥波德一世",
+    "born": 1640,
+    "died": 1705,
+    "title": "Imperator Romanorum",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (Imperator Romanorum)",
+      "神圣罗马皇帝 (by ID)"
+    ]
+  },
+  {
+    "id": "Charles_II_of_Spain",
+    "name": "Charles II",
+    "name_zh": "卡洛斯二世",
+    "born": 1661,
+    "died": 1700,
+    "title": "",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "重要君主"
+    ]
+  },
+  {
+    "id": "Joseph_I,_Holy_Roman_Emperor",
+    "name": "Joseph I",
+    "name_zh": "约瑟夫一世",
+    "born": 1678,
+    "died": 1711,
+    "title": "Imperator Romanorum",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (Imperator Romanorum)",
+      "神圣罗马皇帝 (by ID)"
+    ]
+  },
+  {
+    "id": "Charles_VI,_Holy_Roman_Emperor",
+    "name": "Charles VI",
+    "name_zh": "查理六世",
+    "born": 1685,
+    "died": 1740,
+    "title": "Imperator Romanorum",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (Imperator Romanorum)",
+      "神圣罗马皇帝 (by ID)"
+    ]
+  },
+  {
+    "id": "Charles_VII,_Holy_Roman_Emperor",
+    "name": "Charles VII",
+    "name_zh": "查理七世",
+    "born": 1697,
+    "died": 1745,
+    "title": "",
+    "dynasty": "",
+    "role": "consort",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (by ID)"
+    ]
+  },
+  {
+    "id": "Maria_Theresa",
+    "name": "Maria Theresa",
+    "name_zh": "玛丽亚·特蕾莎",
+    "born": 1717,
+    "died": 1780,
+    "title": "",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "female",
+    "importance": [
+      "哈布斯堡关键人物"
+    ]
+  },
+  {
+    "id": "Joseph_II,_Holy_Roman_Emperor",
+    "name": "Joseph II",
+    "name_zh": "约瑟夫二世",
+    "born": 1741,
+    "died": 1790,
+    "title": "Imperator Romanorum",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (Imperator Romanorum)",
+      "神圣罗马皇帝 (by ID)"
+    ]
+  },
+  {
+    "id": "Leopold_II,_Holy_Roman_Emperor",
+    "name": "Leopold II",
+    "name_zh": "利奥波德二世",
+    "born": 1747,
+    "died": 1792,
+    "title": "Imperator Romanorum",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (Imperator Romanorum)",
+      "神圣罗马皇帝 (by ID)"
+    ]
+  },
+  {
+    "id": "Francis_II,_Holy_Roman_Emperor",
+    "name": "Francis II & I",
+    "name_zh": "弗朗茨二世兼一世",
+    "born": 1768,
+    "died": 1835,
+    "title": "",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (by ID)"
+    ]
+  },
+  {
+    "id": "Franz_Joseph_I_of_Austria",
+    "name": "Franz Joseph I",
+    "name_zh": "弗朗茨·约瑟夫一世",
+    "born": 1830,
+    "died": 1916,
+    "title": "",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "哈布斯堡关键人物"
+    ]
+  },
+  {
+    "id": "Maximilian_I_of_Mexico",
+    "name": "Maximilian I",
+    "name_zh": "马克西米利安一世",
+    "born": 1832,
+    "died": 1867,
+    "title": "",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "重要君主"
+    ]
+  },
+  {
+    "id": "Empress_Elisabeth_of_Austria",
+    "name": "Elisabeth",
+    "name_zh": "伊丽莎白/茜茜公主",
+    "born": 1837,
+    "died": 1898,
+    "title": "",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "female",
+    "importance": [
+      "哈布斯堡关键人物"
+    ]
+  },
+  {
+    "id": "Archduke_Franz_Ferdinand_of_Austria",
+    "name": "Archduke Franz Ferdinand",
+    "name_zh": "弗朗茨·斐迪南",
+    "born": 1863,
+    "died": 1914,
+    "title": "Archduke of Austria-Este",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "哈布斯堡关键人物"
+    ]
+  },
+  {
+    "id": "Charles_I_of_Austria",
+    "name": "Charles I & IV",
+    "name_zh": "卡尔一世兼四世",
+    "born": 1887,
+    "died": 1922,
+    "title": "",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "哈布斯堡关键人物"
+    ]
+  },
+  {
+    "id": "Archduke_Charles,_Duke_of_Teschen",
+    "name": "Archduke Charles",
+    "name_zh": "卡尔大公",
+    "born": 1771,
+    "died": 1847,
+    "title": "Duke of Teschen, Royal Prince of Hungary, Bohemia and Croatia",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "哈布斯堡关键人物"
+    ]
+  },
+  {
+    "id": "Ferdinand_I_of_Austria",
+    "name": "Ferdinand I of Austria",
+    "name_zh": "奥地利皇帝斐迪南一世",
+    "born": 1793,
+    "died": 1875,
+    "title": "",
+    "dynasty": "",
+    "role": "consort",
+    "sex": "male",
+    "importance": [
+      "哈布斯堡关键人物"
+    ]
+  },
+  {
+    "id": "Ferdinand_I,_Holy_Roman_Emperor",
+    "name": "Ferdinand I, Holy Roman Emperor",
+    "name_zh": "神圣罗马皇帝斐迪南一世",
+    "born": 1503,
+    "died": 1564,
+    "title": "",
+    "dynasty": "",
+    "role": "relative",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (by ID)"
+    ]
+  },
+  {
+    "id": "Francis_I,_Holy_Roman_Emperor",
+    "name": "Francis I, Holy Roman Emperor",
+    "name_zh": "神圣罗马皇帝弗朗茨一世",
+    "born": 1708,
+    "died": 1765,
+    "title": "",
+    "dynasty": "",
+    "role": "consort",
+    "sex": "male",
+    "importance": [
+      "神圣罗马皇帝 (by ID)"
+    ]
+  },
+  {
+    "id": "Philip_the_Handsome",
+    "name": "Philip the Handsome",
+    "name_zh": "美男子腓力",
+    "born": 1478,
+    "died": 1506,
+    "title": "",
+    "dynasty": "House of Habsburg",
+    "role": "habsburg",
+    "sex": "male",
+    "importance": [
+      "重要君主"
+    ]
+  },
+    {
+    "id": "Albert_I_of_Germany",
+    "name": "Albert I",
+    "born": 1255,
+    "died": 1308,
+    "dynasty": "House of Habsburg",
+    "title": "",
+    "role": "habsburg",
+    "sex": "male",
+    "name_zh": "阿尔伯特一世/阿尔布雷希特一世",
+    "importance": [
+      "重要君主"
+    ]
+  }
+]
