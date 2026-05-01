@@ -123,9 +123,9 @@ let currentNodeById = null;
    ============================================================ */
 async function loadData() {
   const [nd, ed, desc] = await Promise.all([
-    fetch('/nodes.json').then(r => r.json()),
-    fetch('/edges.json').then(r => r.json()),
-    fetch('/descriptions.json').then(r => r.json()),
+    fetch(import.meta.env.BASE_URL + 'nodes.json').then(r => r.json()),
+    fetch(import.meta.env.BASE_URL + 'edges.json').then(r => r.json()),
+    fetch(import.meta.env.BASE_URL + 'descriptions.json').then(r => r.json()),
   ]);
 
   nd.forEach(d => { if (d.born == null) d.born = null; d._jx = (Math.random() - 0.5) * 40; });
@@ -1191,7 +1191,7 @@ function switchToHomeFromHistory() {
 }
 
 async function initHistoryPage() {
-  const res = await fetch('/files.json');
+  const res = await fetch(import.meta.env.BASE_URL + 'files.json');
   historyData = await res.json();
   historyTree = buildTree(historyData);
   renderTree();
@@ -1371,7 +1371,7 @@ function renderFileList(files) {
     item.addEventListener('click', () => {
       const path = item.dataset.path;
       const a = document.createElement('a');
-      a.href = '/' + path;
+      a.href = import.meta.env.BASE_URL + path;
       a.download = path.split('/').pop();
       a.click();
     });
@@ -1391,8 +1391,8 @@ function formatFileSize(bytes) {
 
 async function initCharactersPage() {
   const [nd, desc] = await Promise.all([
-    fetch('/important_nodes.json').then(r => r.json()),
-    fetch('/important_descriptions.json').then(r => r.json()),
+    fetch(import.meta.env.BASE_URL + 'important_nodes.json').then(r => r.json()),
+    fetch(import.meta.env.BASE_URL + 'important_descriptions.json').then(r => r.json()),
   ]);
   importantNodes = nd;
   importantDescs = desc;
@@ -1416,7 +1416,7 @@ function renderCharactersGrid() {
     const born = p.born != null ? p.born : '?';
     const died = p.died != null ? p.died : '?';
     const tags = p.importance || [];
-    const imgPath = 'pictures/' + p.id + '.jpg';
+    const imgPath = import.meta.env.BASE_URL + 'pictures/' + p.id + '.jpg';
 
     const card = document.createElement('div');
     card.className = 'cr-card';
@@ -1533,7 +1533,7 @@ function renderDetailPage(person) {
   document.getElementById('detail-dynasty').textContent = dynasty;
 
   const imgEl = document.getElementById('detail-img');
-  imgEl.src = 'pictures/' + person.id + '.jpg';
+  imgEl.src = import.meta.env.BASE_URL + 'pictures/' + person.id + '.jpg';
   imgEl.alt = nameZh;
 
   const tagsDiv = document.getElementById('detail-tags');
