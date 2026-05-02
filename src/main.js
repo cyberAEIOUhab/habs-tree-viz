@@ -603,10 +603,12 @@ function findOtherPath(aId, bId, cId) {
 // Cache for F and r values – cleared per kinship query
 let fCache = new Map();
 let rCache = new Map();
+let rFullCache = new Map(); // separate cache for full-enumeration computeRFull
 
 function clearKinshipCaches() {
   fCache = new Map();
   rCache = new Map();
+  rFullCache = new Map();
 }
 
 /**
@@ -616,6 +618,9 @@ function clearKinshipCaches() {
  */
 function findAllAncestorPaths(personId, maxDepth = 15) {
   const result = new Map();
+
+  // Include self as ancestor (path of length 1 = zero steps upward)
+  result.set(personId, [[personId]]);
 
   function dfs(currentId, path, visited) {
     if (path.length - 1 > maxDepth) return;
@@ -651,6 +656,28 @@ function findAllAncestorPaths(personId, maxDepth = 15) {
   return result;
 }
 
+/** True when a is the direct parent of b or vice versa (one parent-type edge). */
+function isDirectParentChild(aId, bId) {
+  for (const idx of (adjIndex.get(aId) || [])) {
+    const edge = edges[idx];
+    if (edge.type !== 'parent') continue;
+    const srcId = typeof edge.source === 'object' ? edge.source.id : edge.source;
+    const tgtId = typeof edge.target === 'object' ? edge.target.id : edge.target;
+    if (srcId === aId && tgtId === bId) return true;
+    if (srcId === bId && tgtId === aId) return true;
+  }
+  return false;
+}
+
+/** True when pathA and pathB share any node other than the final common ancestor. */
+function pathsOverlap(pathA, pathB) {
+  const setA = new Set(pathA);
+  for (let i = 0; i < pathB.length - 1; i++) {
+    if (setA.has(pathB[i])) return true;
+  }
+  return false;
+}
+
 /**
  * Compute inbreeding coefficient F for an individual.
  * F(person) = r(father, mother) / 2
@@ -683,9 +710,9 @@ function computeF(personId, depth = 0) {
 
   let r = 0;
   if (father && mother) {
-    r = computeR(father, mother, depth + 1);
+    r = computeRFull(father, mother, depth + 1).r;
   } else {
-    r = computeR(parentIds[0], parentIds[1], depth + 1);
+    r = computeRFull(parentIds[0], parentIds[1], depth + 1).r;
   }
 
   const f = r / 2;
@@ -694,19 +721,30 @@ function computeF(personId, depth = 0) {
 }
 
 /**
- * Wright's coefficient of kinship between A and B:
- *   r(A,B) = Σ [(1/2)^(da+db+1) × (1 + F_ancestor)]
- * summed over all common ancestors and all path pairs.
+ * Full-enumeration Wright's coefficient (all non-overlapping path pairs).
+ * Used internally for F (inbreeding) computation to capture all genetic pathways.
+ *
+ * Returns { r, contributions } where contributions is
+ * Map<ancestorId, [{pathA, pathB, da, db}]>.
  */
-function computeR(aId, bId, depth = 0) {
-  if (depth > 15) return 0;
+function computeRFull(aId, bId, depth = 0) {
+  if (depth > 15) return { r: 0, contributions: new Map() };
   const cacheKey = aId < bId ? `${aId}|${bId}` : `${bId}|${aId}`;
-  if (rCache.has(cacheKey)) return rCache.get(cacheKey);
+  if (rFullCache.has(cacheKey)) return rFullCache.get(cacheKey);
+
+
+  // Direct parent-child: r = 0.5 (one-generation only)
+  if (isDirectParentChild(aId, bId)) {
+    const result = { r: 0.5, contributions: new Map() };
+    rFullCache.set(cacheKey, result);
+    return result;
+  }
 
   const ancestorsA = findAllAncestorPaths(aId, 15);
   const ancestorsB = findAllAncestorPaths(bId, 15);
 
   let totalR = 0;
+  const contributions = new Map();
 
   for (const [ancestorId, pathsA] of ancestorsA) {
     const pathsB = ancestorsB.get(ancestorId);
@@ -718,13 +756,97 @@ function computeR(aId, bId, depth = 0) {
       const da = pathA.length - 1; // steps from A to ancestor
       for (const pathB of pathsB) {
         const db = pathB.length - 1; // steps from B to ancestor
-        totalR += Math.pow(0.5, da + db + 1) * (1 + fAnc);
+
+        // Skip path pairs whose combined route shares nodes (other than CA)
+        if (pathsOverlap(pathA, pathB)) continue;
+
+        totalR += Math.pow(0.5, da + db) * (1 + fAnc);
+
+        if (!contributions.has(ancestorId)) {
+          contributions.set(ancestorId, []);
+        }
+        contributions.get(ancestorId).push({
+          pathA: [...pathA],
+          pathB: [...pathB],
+          da,
+          db,
+        });
       }
     }
   }
 
-  rCache.set(cacheKey, totalR);
-  return totalR;
+  const result = { r: totalR, contributions };
+  rFullCache.set(cacheKey, result);
+  return result;
+}
+
+/**
+ * Simplified Wright's coefficient for display purposes.
+ * Each common ancestor contributes once via the shortest non-overlapping
+ * path pair, giving the textbook "closest relationship" r value.
+ *
+ * Returns { r, contributions } with exactly one pair per ancestor.
+ */
+function computeR(aId, bId) {
+  const cacheKey = aId < bId ? `${aId}|${bId}` : `${bId}|${aId}`;
+  if (rCache.has(cacheKey)) return rCache.get(cacheKey);
+
+
+  // Direct parent-child: r = 0.5 (one-generation only)
+  if (isDirectParentChild(aId, bId)) {
+    const result = { r: 0.5, contributions: new Map() };
+    rCache.set(cacheKey, result);
+    return result;
+  }
+
+  const ancestorsA = findAllAncestorPaths(aId, 15);
+  const ancestorsB = findAllAncestorPaths(bId, 15);
+
+  // First pass: collect best pair per ancestor and find minimum distance
+  let minDistance = Infinity;
+  const candidates = []; // [{ancestorId, pair, fAnc}]
+
+  for (const [ancestorId, pathsA] of ancestorsA) {
+    const pathsB = ancestorsB.get(ancestorId);
+    if (!pathsB) continue;
+
+    const fAnc = computeF(ancestorId);
+
+    let bestPair = null;
+    let bestLen = Infinity;
+
+    for (const pathA of pathsA) {
+      const da = pathA.length - 1;
+      for (const pathB of pathsB) {
+        const db = pathB.length - 1;
+        if (da + db >= bestLen) continue;
+        if (pathsOverlap(pathA, pathB)) continue;
+
+        bestLen = da + db;
+        bestPair = { pathA: [...pathA], pathB: [...pathB], da, db };
+      }
+    }
+
+    if (bestPair) {
+      candidates.push({ ancestorId, pair: bestPair, fAnc });
+      if (bestLen < minDistance) minDistance = bestLen;
+    }
+  }
+
+  // Only count ancestors at the minimum distance
+  let totalR = 0;
+  const contributions = new Map();
+
+  for (const c of candidates) {
+    if (c.pair.da + c.pair.db === minDistance) {
+      totalR += Math.pow(0.5, c.pair.da + c.pair.db) * (1 + c.fAnc);
+      contributions.set(c.ancestorId, [c.pair]);
+    }
+  }
+
+  const result = { r: totalR, contributions };
+  rCache.set(cacheKey, result);
+  return result;
 }
 
 /** Convert a node-id path to the corresponding edge-index array. */
@@ -751,6 +873,8 @@ function getEdgeIndicesForPath(nodeIds) {
 
 /** Chinese relation-type label based on generational distances. */
 function getRelationType(da, db) {
+  if (da === 0 && db === 1 || da === 1 && db === 0) return '父母/子女';
+  if (da === 0 && db === 2 || da === 2 && db === 0) return '祖孙';
   if (da === 1 && db === 1) return '兄妹';
   if ((da === 1 && db === 2) || (da === 2 && db === 1)) return '叔侄';
   if ((da === 1 && db >= 3) || (da >= 3 && db === 1)) return '祖孙';
@@ -768,51 +892,37 @@ function computeKinshipSingle(personId) {
 /** Compute kinship between two people (r) with common-ancestor details. */
 function computeKinshipDual(aId, bId) {
   clearKinshipCaches();
-  const r = computeR(aId, bId);
-
-  const ancestorsA = findAllAncestorPaths(aId, 15);
-  const ancestorsB = findAllAncestorPaths(bId, 15);
+  const fullResult = computeR(aId, bId);
 
   const commonAncestors = [];
 
-  for (const [ancestorId, pathsA] of ancestorsA) {
-    const pathsB = ancestorsB.get(ancestorId);
-    if (!pathsB) continue;
-
-    // Pick the shortest path pair for display
-    let bestPathA = pathsA[0];
-    let bestPathB = pathsB[0];
+  for (const [ancestorId, pairs] of fullResult.contributions) {
+    // Pick the shortest valid path pair for display
+    let bestPair = pairs[0];
     let minLen = Infinity;
-    for (const pa of pathsA) {
-      for (const pb of pathsB) {
-        if (pa.length + pb.length < minLen) {
-          minLen = pa.length + pb.length;
-          bestPathA = pa;
-          bestPathB = pb;
-        }
+    for (const pair of pairs) {
+      if (pair.da + pair.db < minLen) {
+        minLen = pair.da + pair.db;
+        bestPair = pair;
       }
     }
 
-    const da = bestPathA.length - 1;
-    const db = bestPathB.length - 1;
-    const relationType = getRelationType(da, db);
-
     commonAncestors.push({
       ancestorId,
-      da,
-      db,
-      relationType,
-      pathA: bestPathA,
-      pathB: bestPathB,
-      edgeIndicesA: getEdgeIndicesForPath(bestPathA),
-      edgeIndicesB: getEdgeIndicesForPath(bestPathB),
+      da: bestPair.da,
+      db: bestPair.db,
+      relationType: getRelationType(bestPair.da, bestPair.db),
+      pathA: bestPair.pathA,
+      pathB: bestPair.pathB,
+      edgeIndicesA: getEdgeIndicesForPath(bestPair.pathA),
+      edgeIndicesB: getEdgeIndicesForPath(bestPair.pathB),
     });
   }
 
   // Sort closest relations first
   commonAncestors.sort((a, b) => (a.da + a.db) - (b.da + b.db));
 
-  return { type: 'dual', personA: aId, personB: bId, r, commonAncestors };
+  return { type: 'dual', personA: aId, personB: bId, r: fullResult.r, commonAncestors };
 }
 
 function updateHint() {
