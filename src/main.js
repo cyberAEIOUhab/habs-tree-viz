@@ -1356,7 +1356,7 @@ function renderFileList(files) {
     const iconCls = ['pdf', 'epub', 'docx', 'pptx'].includes(ext) ? ext : 'other';
     const iconLabel = ext.toUpperCase().slice(0, 4);
     return `
-      <div class="hf-item" data-url="${escHtml(f.url || (import.meta.env.BASE_URL + f.path))}" data-name="${escHtml(f.name)}">
+      <div class="hf-item" data-url="${escHtml(f.url || ('https://habs-history.oss-cn-beijing.aliyuncs.com/' + f.path.split('/').map(encodeURIComponent).join('/')))}" data-name="${escHtml(f.name)}">
         <div class="hf-icon ${iconCls}">${iconLabel}</div>
         <div class="hf-info">
           <div class="hf-name">${escHtml(f.name)}</div>
@@ -1369,6 +1369,7 @@ function renderFileList(files) {
   // Click to download (OSS URL)
   container.querySelectorAll('.hf-item').forEach(item => {
     item.addEventListener('click', () => {
+      console.log('下载URL:', item.dataset.url);
       window.open(item.dataset.url, '_blank');
     });
   });
