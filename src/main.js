@@ -1369,12 +1369,7 @@ function renderFileList(files) {
   // Click to download (OSS URL)
   container.querySelectorAll('.hf-item').forEach(item => {
     item.addEventListener('click', () => {
-      const a = document.createElement('a');
-      a.href = item.dataset.url;
-      a.download = item.dataset.name;
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.click();
+      window.open(item.dataset.url, '_blank');
     });
   });
 }
