@@ -91,6 +91,12 @@ let hlEdges = new Set();
 let selectedNodeId = null;       // first pick
 let pathResult = null;           // { nodeIds: [...], edgeIndices: [...] }
 
+let pathMode = 'shortest';       // 'shortest' | 'other'
+let otherPathA = null;           // first selected node id (起点)
+let otherPathB = null;           // second selected node id (终点)
+let otherPathC = null;           // third selected node id (中间人)
+let otherPathResult = null;      // { type, mainPathNodeIds, mainPathEdgeIndices, cNodeId, dNodeId, cdEdgeIdx, cdRelation }
+
 let filterState = { habsburg: true, consort: true, relative: true };
 let yearRange = [null, null];    // [min, max] – set after data load
 
@@ -282,7 +288,8 @@ function render() {
     .style('cursor', 'pointer')
     .on('mouseenter', onHover)
     .on('mouseleave', offHover)
-    .on('click', onNodeClick);
+    .on('click', onNodeClick)
+    .on('contextmenu', onNodeRightClick);
 
   // ----- screen-space labels (outside zoom, constant visual size) -----
   labelG.selectAll('text')
@@ -333,14 +340,26 @@ function updateLabelPositions(t) {
   // Build set of node IDs whose labels should be visible
   let visibleSet = new Set(); // empty = nothing shown
   if (showLabels) {
-    const hasPath = pathResult != null;
-    const hasSelection = selectedNodeId != null;
-    if (hasPath) {
-      visibleSet = new Set(pathResult.nodeIds);
-    } else if (hasSelection) {
-      visibleSet = new Set([selectedNodeId]);
-    } else if (hoveredId != null) {
-      visibleSet = new Set(hlNodes);
+    if (pathMode === 'other') {
+      // Other-path mode
+      if (otherPathResult) {
+        visibleSet = new Set(otherPathResult.mainPathNodeIds);
+        if (otherPathResult.type === 'vShape') visibleSet.add(otherPathResult.cNodeId);
+      } else if (otherPathA && otherPathB) {
+        visibleSet = new Set([otherPathA, otherPathB]);
+      } else if (otherPathA) {
+        visibleSet = new Set([otherPathA]);
+      }
+    } else {
+      const hasPath = pathResult != null;
+      const hasSelection = selectedNodeId != null;
+      if (hasPath) {
+        visibleSet = new Set(pathResult.nodeIds);
+      } else if (hasSelection) {
+        visibleSet = new Set([selectedNodeId]);
+      } else if (hoveredId != null) {
+        visibleSet = new Set(hlNodes);
+      }
     }
   }
 
@@ -460,6 +479,138 @@ function describePath(nodeIds, edgeIndices) {
 }
 
 /* ============================================================
+   Other-path helpers
+   ============================================================ */
+function clearOtherPathSelection() {
+  otherPathA = null;
+  otherPathB = null;
+  otherPathC = null;
+  otherPathResult = null;
+}
+
+function setPathMode(mode) {
+  if (pathMode === mode) return;
+  pathMode = mode;
+  // Clear all selection state on mode switch
+  clearSelection();
+  clearOtherPathSelection();
+  updateHint();
+}
+
+function flashRedNode(nodeId) {
+  if (!nodeG) return;
+  nodeG.selectAll('circle')
+    .filter(d => d.id === nodeId)
+    .transition()
+    .duration(300)
+    .attr('fill', '#EF4444')
+    .transition()
+    .duration(300)
+    .attr('fill', d => (NODE_STYLE[d.role] || NODE_STYLE.relative).color);
+}
+
+function getRelationDescription(nodeId1, nodeId2, edgeIdx) {
+  const edge = edges[edgeIdx];
+  const a = nodeById.get(nodeId1);
+  const b = nodeById.get(nodeId2);
+  if (!a || !b) return '相关';
+
+  if (edge.type === 'spouse') {
+    return '配偶';
+  }
+  if (edge.type === 'parent') {
+    const aBorn = a.born, bBorn = b.born;
+    if (aBorn != null && bBorn != null) {
+      if (aBorn < bBorn) {
+        return a.sex === 'female' ? '母亲' : a.sex === 'male' ? '父亲' : '父/母';
+      } else {
+        return '子女';
+      }
+    }
+    return '亲属';
+  }
+  return '相关';
+}
+
+function findOtherPath(aId, bId, cId) {
+  // Case 1: direct path through C (A → C → B)
+  const pathAtoC = findPath(aId, cId);
+  const pathCtoB = findPath(cId, bId);
+
+  if (pathAtoC && pathCtoB) {
+    const mergedNodeIds = [...pathAtoC.nodeIds, ...pathCtoB.nodeIds.slice(1)];
+    const mergedEdgeIndices = [...pathAtoC.edgeIndices, ...pathCtoB.edgeIndices];
+    const uniqueNodes = new Set(mergedNodeIds);
+    if (uniqueNodes.size === mergedNodeIds.length) {
+      return {
+        type: 'direct',
+        mainPathNodeIds: mergedNodeIds,
+        mainPathEdgeIndices: mergedEdgeIndices,
+      };
+    }
+  }
+
+  // Case 2: V-shaped path (A → D → B with C↔D branch)
+  const cNeighbors = adjIndex.get(cId) || [];
+  let bestResult = null;
+  let bestLength = Infinity;
+
+  for (const edgeIdx of cNeighbors) {
+    const edge = edges[edgeIdx];
+    const srcId = typeof edge.source === 'object' ? edge.source.id : edge.source;
+    const tgtId = typeof edge.target === 'object' ? edge.target.id : edge.target;
+    const dNodeId = srcId === cId ? tgtId : srcId;
+
+    const pathAtoD = findPath(aId, dNodeId);
+    const pathDtoB = findPath(dNodeId, bId);
+
+    if (pathAtoD && pathDtoB) {
+      const mergedNodeIds = [...pathAtoD.nodeIds, ...pathDtoB.nodeIds.slice(1)];
+      const mergedEdgeIndices = [...pathAtoD.edgeIndices, ...pathDtoB.edgeIndices];
+      const uniqueNodes = new Set(mergedNodeIds);
+      if (uniqueNodes.size === mergedNodeIds.length) {
+        const totalLen = mergedNodeIds.length;
+        if (totalLen < bestLength) {
+          bestLength = totalLen;
+          const relation = getRelationDescription(cId, dNodeId, edgeIdx);
+          bestResult = {
+            type: 'vShape',
+            mainPathNodeIds: mergedNodeIds,
+            mainPathEdgeIndices: mergedEdgeIndices,
+            cNodeId: cId,
+            dNodeId: dNodeId,
+            cdEdgeIdx: edgeIdx,
+            cdRelation: relation,
+          };
+        }
+      }
+    }
+  }
+
+  return bestResult; // null if neither case worked
+}
+
+function updateHint() {
+  const hint = document.getElementById('hint');
+  if (pathMode === 'other') {
+    if (otherPathA == null) {
+      hint.textContent = '其他路径模式：请点击选择起点人物';
+    } else if (otherPathB == null) {
+      const a = nodeById.get(otherPathA);
+      hint.textContent = `已选择起点「${displayName(a)}」，请选择终点人物`;
+    } else if (otherPathC == null && !otherPathResult) {
+      const a = nodeById.get(otherPathA);
+      const b = nodeById.get(otherPathB);
+      hint.textContent = `已选择「${displayName(a)}」→「${displayName(b)}」，请选择中间人物 · 右键清除中间人 · ESC 重置`;
+    } else {
+      hint.textContent = '其他路径模式 · 右键清除中间人 · ESC 重置';
+    }
+  } else {
+    hint.textContent = '点击人物选中，再点另一人查找关系路径 · ESC 清除';
+  }
+}
+
+/* ============================================================
    Node click interaction
    ============================================================ */
 function onNodeClick(event, d) {
@@ -469,6 +620,79 @@ function onNodeClick(event, d) {
   // Hover tooltip lingers – hide it
   hideTooltip();
 
+  // ---- Other-path mode ----
+  if (pathMode === 'other') {
+    if (otherPathA == null) {
+      // Step 1: Select A (起点)
+      otherPathA = d.id;
+      otherPathB = null;
+      otherPathC = null;
+      otherPathResult = null;
+      updateView();
+      updatePathPanel();
+      updateHint();
+      openInfoPanel(d);
+    } else if (otherPathB == null) {
+      // Step 2: Select B (终点)
+      if (d.id === otherPathA) {
+        clearOtherPathSelection();
+        updateView();
+        updatePathPanel();
+        updateHint();
+        closeInfoPanel();
+        return;
+      }
+      otherPathB = d.id;
+      otherPathC = null;
+      otherPathResult = null;
+      updateView();
+      updatePathPanel();
+      updateHint();
+      openInfoPanel(d);
+    } else {
+      // Step 3: Select C (中间人)
+      if (d.id === otherPathA || d.id === otherPathB) {
+        // C cannot be A or B
+        flashRedNode(d.id);
+        return;
+      }
+      if (d.id === otherPathC) {
+        // Click same C → deselect C
+        otherPathC = null;
+        otherPathResult = null;
+        updateView();
+        updatePathPanel();
+        updateHint();
+        return;
+      }
+      otherPathC = d.id;
+      const result = findOtherPath(otherPathA, otherPathB, otherPathC);
+      if (result) {
+        otherPathResult = result;
+        updateView();
+        updatePathPanel();
+        updateHint();
+        openInfoPanel(d);
+      } else {
+        // Case 3: no path through C
+        otherPathResult = null;
+        updateView();
+        updatePathPanel(null, null, false, d.id);
+        updateHint();
+        flashRedNode(d.id);
+        // Reset C after flash so user can try another C
+        setTimeout(() => {
+          otherPathC = null;
+          updateView();
+          updatePathPanel();
+          updateHint();
+        }, 900);
+      }
+    }
+    return;
+  }
+
+  // ---- Shortest-path mode ----
   if (selectedNodeId == null) {
     // ---- First selection ----
     selectedNodeId = d.id;
@@ -498,7 +722,24 @@ function onNodeClick(event, d) {
   }
 }
 
+function onNodeRightClick(event, d) {
+  event.preventDefault();
+  event.stopPropagation();
+  if (pathMode !== 'other') return;
+  if (otherPathC != null) {
+    otherPathC = null;
+    otherPathResult = null;
+    updateView();
+    updatePathPanel();
+    updateHint();
+  }
+}
+
 function onBackgroundClick() {
+  if (pathMode === 'other' && (otherPathA != null || otherPathB != null || otherPathC != null)) {
+    clearSelection();
+    return;
+  }
   if (selectedNodeId != null) {
     clearSelection();
   }
@@ -510,9 +751,11 @@ function clearSelection() {
   hoveredId = null;
   hlNodes = new Set();
   hlEdges = new Set();
+  clearOtherPathSelection();
   updateView();
   updatePathPanel();
   closeInfoPanel();
+  updateHint();
 }
 
 /* ============================================================
@@ -520,6 +763,54 @@ function clearSelection() {
    ============================================================ */
 function updateView() {
   if (!nodeG) return;
+
+  // ---- Other-path mode ----
+  if (pathMode === 'other') {
+    const hasA = otherPathA != null;
+    const hasB = otherPathB != null;
+    const hasResult = otherPathResult != null;
+    const mainPathSet = hasResult ? new Set(otherPathResult.mainPathNodeIds) : new Set();
+    const isVShape = hasResult && otherPathResult.type === 'vShape';
+
+    nodeG.selectAll('circle')
+      .attr('opacity', n => {
+        if (!isNodeVisible(n.id)) return 0.03;
+        if (!hasA && !hasB) return 1;
+        if (hasResult) {
+          if (mainPathSet.has(n.id)) return 1;
+          if (isVShape && n.id === otherPathResult.cNodeId) return 1;
+          return 0.10;
+        }
+        // Step 1 or 2: A/B or both selected, no result yet
+        if (n.id === otherPathA || n.id === otherPathB) return 1;
+        return 0.25;
+      })
+      .attr('fill', n => {
+        if (n.id === otherPathA || n.id === otherPathB) return '#D4AF37';
+        if (hasResult && isVShape && n.id === otherPathResult.cNodeId) return '#A855F7';
+        if (hasResult && isVShape && n.id === otherPathResult.dNodeId) return '#3B82F6';
+        if (hasResult && !isVShape && n.id === otherPathC) return '#A855F7';
+        return (NODE_STYLE[n.role] || NODE_STYLE.relative).color;
+      });
+
+    // Build label visibility set
+    let visibleSet = new Set();
+    if (hasResult) {
+      visibleSet = new Set(otherPathResult.mainPathNodeIds);
+      if (isVShape) visibleSet.add(otherPathResult.cNodeId);
+    } else if (hasA && hasB) {
+      visibleSet = new Set([otherPathA, otherPathB]);
+    } else if (hasA) {
+      visibleSet = new Set([otherPathA]);
+    }
+    const vs = visibleSet;
+    updateLabelPositionsWithSet(vs);
+
+    drawEdges(currentTransform);
+    return;
+  }
+
+  // ---- Shortest-path mode ----
   const hasSelection = selectedNodeId != null;
   const hasPath = pathResult != null;
   const pathNodeSet = hasPath ? new Set(pathResult.nodeIds) : new Set();
@@ -531,13 +822,33 @@ function updateView() {
       if (hasPath) return pathNodeSet.has(n.id) ? 1 : 0.08;
       if (hasSelection) return n.id === selectedNodeId ? 1 : 0.08;
       return 1;
-    });
+    })
+    .attr('fill', n => (NODE_STYLE[n.role] || NODE_STYLE.relative).color);
 
   // ---- Labels ----
   updateLabelPositions(currentTransform);
 
   // ---- Edges ----
   drawEdges(currentTransform);
+}
+
+function updateLabelPositionsWithSet(visibleSet) {
+  const t = currentTransform;
+  const showLabels = t.k >= LABEL_ZOOM_THRESHOLD;
+
+  labelG.selectAll('text').each(function (d) {
+    const sx = t.applyX(d.x);
+    const sy = t.applyY(d.y);
+    const r = (NODE_STYLE[d.role] || NODE_STYLE.relative).r;
+    const offsetY = -r * t.k - 6;
+
+    d3.select(this)
+      .attr('x', sx)
+      .attr('y', sy + offsetY);
+
+    const visible = showLabels && isNodeVisible(d.id) && visibleSet.has(d.id);
+    d3.select(this).attr('opacity', visible ? 1 : 0);
+  });
 }
 
 /* ============================================================
@@ -554,6 +865,88 @@ function drawEdges(t) {
 
   const pathEdgeSet = hasPath ? new Set(pathResult.edgeIndices) : new Set();
 
+  // ---- Other-path mode ----
+  if (pathMode === 'other') {
+    const hasResult = otherPathResult != null;
+    const mainEdgeSet = hasResult ? new Set(otherPathResult.mainPathEdgeIndices) : new Set();
+    const hasAB = otherPathA != null && otherPathB != null;
+    const hasA = otherPathA != null;
+
+    // Build set of edges connected to A or B (for step 2 highlighting)
+    let abConnected = new Set();
+    if (hasAB && !hasResult) {
+      (adjIndex.get(otherPathA) || []).forEach(idx => abConnected.add(idx));
+      (adjIndex.get(otherPathB) || []).forEach(idx => abConnected.add(idx));
+    } else if (hasA && !hasAB && !hasResult) {
+      (adjIndex.get(otherPathA) || []).forEach(idx => abConnected.add(idx));
+    }
+
+    ['parent', 'spouse'].forEach(type => {
+      const color = EDGE_STYLE[type].color;
+
+      // Pass 1: highlighted edges (main path or AB-connected)
+      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = color + 'cc';
+      ctx.beginPath();
+      let hlCount = 0;
+      edges.forEach((e, i) => {
+        if (e.type !== type) return;
+        const src = e.source, tgt = e.target;
+        if (!src || src.x == null || !tgt || tgt.x == null) return;
+
+        const isHL = hasResult ? mainEdgeSet.has(i)
+          : (hasAB || hasA) ? abConnected.has(i)
+          : false;
+        if (!isHL) return;
+        ctx.moveTo(src.x, src.y);
+        ctx.lineTo(tgt.x, tgt.y);
+        hlCount++;
+      });
+      if (hlCount) ctx.stroke();
+
+      // Pass 2: dimmed background edges
+      const dim = hasResult || hasAB || hasA;
+      ctx.lineWidth = dim ? 0.3 : 0.5;
+      ctx.strokeStyle = dim ? (color + '08') : (color + '55');
+      ctx.beginPath();
+      let dimCount = 0;
+      edges.forEach((e, i) => {
+        if (e.type !== type) return;
+        const src = e.source, tgt = e.target;
+        if (!src || src.x == null || !tgt || tgt.x == null) return;
+
+        const isHL = hasResult ? mainEdgeSet.has(i)
+          : (hasAB || hasA) ? abConnected.has(i)
+          : false;
+        if (isHL) return;
+        ctx.moveTo(src.x, src.y);
+        ctx.lineTo(tgt.x, tgt.y);
+        dimCount++;
+      });
+      if (dimCount) ctx.stroke();
+    });
+
+    // Pass 3: branch edge C↔D (purple dashed) for vShape
+    if (hasResult && otherPathResult.type === 'vShape' && otherPathResult.cdEdgeIdx != null) {
+      const be = edges[otherPathResult.cdEdgeIdx];
+      const bsrc = be.source, btgt = be.target;
+      if (bsrc && bsrc.x != null && btgt && btgt.x != null) {
+        ctx.save();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = '#A855F7';
+        ctx.setLineDash([6, 4]);
+        ctx.beginPath();
+        ctx.moveTo(bsrc.x, bsrc.y);
+        ctx.lineTo(btgt.x, btgt.y);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.restore();
+      }
+    }
+    return;
+  }
+
+  // ---- Shortest-path mode ----
   // Edges connected to the selected node (dim but visible during selection)
   let selConnected = new Set();
   if (hasSelection && !hasPath) {
@@ -612,8 +1005,9 @@ function drawEdges(t) {
    Hover interaction (only in default mode)
    ============================================================ */
 function onHover(event, d) {
-  // Suppress hover when a selection is active
+  // Suppress hover when a selection is active (either mode)
   if (selectedNodeId != null) return;
+  if (pathMode === 'other' && (otherPathA != null || otherPathB != null)) return;
   if (!isNodeVisible(d.id)) return;
   if (hoveredId === d.id) return;
 
@@ -643,6 +1037,7 @@ function onHover(event, d) {
 
 function offHover() {
   if (selectedNodeId != null) return;
+  if (pathMode === 'other' && (otherPathA != null || otherPathB != null)) return;
   hoveredId = null;
   hlNodes = new Set();
   hlEdges = new Set();
@@ -748,10 +1143,83 @@ function closeInfoPanel() {
 /* ============================================================
    Path panel
    ============================================================ */
-function updatePathPanel(srcIdOverride, tgtIdOverride, noPath) {
+function updatePathPanel(srcIdOverride, tgtIdOverride, noPath, otherCId) {
   const panel = document.getElementById('path-panel');
   const content = document.getElementById('path-content');
 
+  // ---- Other-path mode ----
+  if (pathMode === 'other') {
+    if (otherPathA == null) {
+      panel.classList.remove('visible');
+      return;
+    }
+    panel.classList.add('visible');
+
+    const aNode = nodeById.get(otherPathA);
+
+    // Error: no path through C
+    if (otherCId) {
+      const cNode = nodeById.get(otherCId);
+      content.innerHTML = `
+        <div class="path-error">不存在经过「${escHtml(cNode ? displayName(cNode) : otherCId)}」的路径</div>
+        <div class="path-length" style="text-align:center">该人物无法连接起点与终点，请重新选择中间人物</div>
+        <div class="path-length" style="text-align:center;margin-top: 4px">右键清除中间人 · ESC 重置</div>
+      `;
+      return;
+    }
+
+    if (!otherPathB) {
+      // Step 1: A selected, waiting for B
+      let html = `<div class="path-first">已选起点: <strong>${escHtml(displayName(aNode))}</strong></div>`;
+      html += `<div class="path-hint">请选择终点人物</div>`;
+      if (aNode.title) html += `<div class="path-meta">${escHtml(aNode.title)}</div>`;
+      if (aNode.born) html += `<div class="path-meta">${aNode.born} — ${aNode.died || '?'}</div>`;
+      content.innerHTML = html;
+      return;
+    }
+
+    const bNode = nodeById.get(otherPathB);
+
+    if (!otherPathResult) {
+      if (!otherPathC) {
+        // Step 2: A and B selected, waiting for C
+        let html = `<div class="path-first">已选: <strong>${escHtml(displayName(aNode))}</strong> → <strong>${escHtml(displayName(bNode))}</strong></div>`;
+        html += `<div class="path-hint">请选择中间人物</div>`;
+        content.innerHTML = html;
+        return;
+      }
+    }
+
+    // Result found
+    if (otherPathResult) {
+      const steps = describePath(otherPathResult.mainPathNodeIds, otherPathResult.mainPathEdgeIndices);
+      const lastName = otherPathResult.mainPathNodeIds[otherPathResult.mainPathNodeIds.length - 1];
+      const lastNode = nodeById.get(lastName);
+
+      let html = `<div class="path-title">${escHtml(displayName(aNode))} → ${escHtml(displayName(lastNode))}</div>`;
+      html += `<div class="path-steps">`;
+      steps.forEach(line => {
+        html += `<div class="path-step">${escHtml(line)}</div>`;
+      });
+      html += `</div>`;
+
+      if (otherPathResult.type === 'vShape') {
+        const cNode = nodeById.get(otherPathResult.cNodeId);
+        const dNode = nodeById.get(otherPathResult.dNodeId);
+        html += `<div class="path-branch">「${escHtml(displayName(cNode))}」是「${escHtml(displayName(dNode))}」的${otherPathResult.cdRelation}</div>`;
+      }
+
+      html += `<div class="path-length">路径长度: ${otherPathResult.mainPathNodeIds.length - 1} 步，${otherPathResult.mainPathNodeIds.length} 人</div>`;
+
+      content.innerHTML = html;
+      return;
+    }
+
+    // Fallback (shouldn't reach here)
+    return;
+  }
+
+  // ---- Shortest-path mode ----
   if (selectedNodeId == null && !noPath) {
     panel.classList.remove('visible');
     return;
@@ -899,6 +1367,21 @@ function initLangToggle() {
   });
 }
 
+function initModeToggle() {
+  d3.select('#mode-shortest').on('click', () => {
+    if (pathMode === 'shortest') return;
+    d3.select('#mode-shortest').classed('active', true);
+    d3.select('#mode-other').classed('active', false);
+    setPathMode('shortest');
+  });
+  d3.select('#mode-other').on('click', () => {
+    if (pathMode === 'other') return;
+    d3.select('#mode-shortest').classed('active', false);
+    d3.select('#mode-other').classed('active', true);
+    setPathMode('other');
+  });
+}
+
 function focusOnNode(nodeId) {
   const node = nodeById.get(nodeId);
   if (!node || node.x == null) return;
@@ -967,7 +1450,7 @@ function initFilters(ymin, ymax) {
     sliderMax.value = vmax;
 
     // Clear selection on filter change
-    if (selectedNodeId != null) clearSelection();
+    if (selectedNodeId != null || otherPathA != null) clearSelection();
     else updateView();
   }
 
@@ -989,6 +1472,11 @@ function initKeyboard() {
       if (document.activeElement === input && input.value) {
         input.value = '';
         document.getElementById('search-results').style.display = 'none';
+        return;
+      }
+      // Clear other-path selection first
+      if (pathMode === 'other' && (otherPathA != null || otherPathB != null || otherPathC != null)) {
+        clearSelection();
         return;
       }
       // Clear selection
@@ -1114,6 +1602,7 @@ function switchToChart(ymin, ymax) {
       initFilters(ymin, ymax);
       initKeyboard();
       initLangToggle();
+      initModeToggle();
 
       document.getElementById('info-close').addEventListener('click', (e) => {
         e.stopPropagation();

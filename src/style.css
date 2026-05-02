@@ -321,6 +321,41 @@ html, body {
   margin-top: 1px;
 }
 
+/* ========== Path mode toggle ========== */
+#mode-toggle {
+  position: fixed;
+  top: 16px;
+  left: 432px;
+  z-index: 301;
+  display: flex;
+  gap: 0;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.mode-btn {
+  padding: 8px 14px;
+  border: none;
+  background: rgba(10, 14, 26, 0.92);
+  color: rgba(208, 200, 184, 0.5);
+  font-family: Georgia, serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.mode-btn:hover {
+  color: rgba(208, 200, 184, 0.8);
+  background: rgba(212, 175, 55, 0.08);
+}
+.mode-btn.active {
+  color: #0a0e1a;
+  background: #d4af37;
+  font-weight: bold;
+}
+
 /* ========== Language toggle ========== */
 #lang-toggle {
   position: fixed;
@@ -603,6 +638,15 @@ html, body {
   font-size: 13px;
   text-align: center;
   padding: 8px;
+}
+.path-branch {
+  color: #A855F7;
+  font-size: 13px;
+  line-height: 1.8;
+  padding: 3px 0 3px 12px;
+  border-left: 2px solid rgba(168, 85, 247, 0.4);
+  margin-bottom: 4px;
+  margin-top: 8px;
 }
 .path-close {
   position: absolute;
