@@ -1356,7 +1356,7 @@ function renderFileList(files) {
     const iconCls = ['pdf', 'epub', 'docx', 'pptx'].includes(ext) ? ext : 'other';
     const iconLabel = ext.toUpperCase().slice(0, 4);
     return `
-      <div class="hf-item" data-path="${escHtml(f.path)}">
+      <div class="hf-item" data-url="${escHtml(f.url || (import.meta.env.BASE_URL + f.path))}" data-name="${escHtml(f.name)}">
         <div class="hf-icon ${iconCls}">${iconLabel}</div>
         <div class="hf-info">
           <div class="hf-name">${escHtml(f.name)}</div>
@@ -1366,13 +1366,14 @@ function renderFileList(files) {
     `;
   }).join('');
 
-  // Click to download
+  // Click to download (OSS URL)
   container.querySelectorAll('.hf-item').forEach(item => {
     item.addEventListener('click', () => {
-      const path = item.dataset.path;
       const a = document.createElement('a');
-      a.href = import.meta.env.BASE_URL + path;
-      a.download = path.split('/').pop();
+      a.href = item.dataset.url;
+      a.download = item.dataset.name;
+      a.target = '_blank';
+      a.rel = 'noopener';
       a.click();
     });
   });
