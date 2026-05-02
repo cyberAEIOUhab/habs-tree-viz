@@ -7890,27 +7890,27 @@
     "type": "parent"
   },
   {
-    "source": "Ferdinand_II_Holy_Roman_Emperor",
+    "source": "Ferdinand_II,_Holy_Roman_Emperor",
     "target": "Archduchess_Maria_Anna_of_Austria_(born_1610)",
     "type": "parent"
   },
   {
-    "source": "Leopold_II_Holy_Roman_Emperor",
+    "source": "Leopold_II,_Holy_Roman_Emperor",
     "target": "Archduke_John_of_Austria",
     "type": "parent"
   },
   {
-    "source": "Leopold_II_Holy_Roman_Emperor",
+    "source": "Leopold_II,_Holy_Roman_Emperor",
     "target": "Archduke_Joseph_of_Austria_(Palatine_of_Hungary)",
     "type": "parent"
   },
   {
-    "source": "Leopold_II_Holy_Roman_Emperor",
+    "source": "Leopold_II,_Holy_Roman_Emperor",
     "target": "Archduke_Louis_of_Austria",
     "type": "parent"
   },
   {
-    "source": "Charles_II_Archduke_of_Austria",
+    "source": "Charles_II,_Archduke_of_Austria",
     "target": "Archduchess_Maria_Maddalena_of_Austria",
     "type": "parent"
   },
@@ -7920,7 +7920,7 @@
     "type": "parent"
   },
   {
-    "source": "Charles_II_Archduke_of_Austria",
+    "source": "Charles_II,_Archduke_of_Austria",
     "target": "Archduke_Maximilian_Ernest_of_Austria",
     "type": "parent"
   },
