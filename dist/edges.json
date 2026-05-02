@@ -6928,5 +6928,1605 @@
     "source": "Rudolf_I_of_Bohemia",
     "target": "Elizabeth_Richeza_of_Poland",
     "type": "spouse"
+  },
+  {
+    "source": "Catherine_of_Austria_Queen_of_Portugal",
+    "target": "Afonso,_Hereditary_Prince_of_Portugal_(1526)",
+    "type": "parent"
+  },
+  {
+    "source": "Elizabeth_of_Carinthia",
+    "target": "Agnes_of_Austria_(1281–1364)",
+    "type": "parent"
+  },
+  {
+    "source": "Maximilian_Anton_Hereditary_Prince_of_Thurn_and_Taxis",
+    "target": "Albert,_8th_Prince_of_Thurn_and_Taxis",
+    "type": "parent"
+  },
+  {
+    "source": "Duchess_Helene_in_Bavaria",
+    "target": "Albert,_8th_Prince_of_Thurn_and_Taxis",
+    "type": "parent"
+  },
+  {
+    "source": "Elizabeth_of_Carinthia",
+    "target": "Albert_II,_Duke_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Albert_II,_Duke_of_Austria",
+    "target": "Johanna_of_Pfirt",
+    "type": "spouse"
+  },
+  {
+    "source": "Johanna_of_Pfirt",
+    "target": "Albert_III,_Duke_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Albert_III,_Duke_of_Austria",
+    "target": "Beatrix_of_Nuremberg",
+    "type": "spouse"
+  },
+  {
+    "source": "Beatrix_of_Nuremberg",
+    "target": "Albert_IV,_Duke_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Elizabeth_of_Carinthia",
+    "target": "Anne_of_Austria,_Margravine_of_Brandenburg",
+    "type": "parent"
+  },
+  {
+    "source": "Leopold_II_Grand_Duke_of_Tuscany",
+    "target": "Archduchess_Maria_Isabella_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Leopold_II_Grand_Duke_of_Tuscany",
+    "target": "Archduchess_Maria_Luisa_of_Austria_(1845–1917)",
+    "type": "parent"
+  },
+  {
+    "source": "Leopold_II_Grand_Duke_of_Tuscany",
+    "target": "Archduke_Karl_Salvator_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Archduke_Franz_Ferdinand_of_Austria",
+    "target": "Sophie_Duchess_of_Hohenberg",
+    "type": "spouse"
+  },
+  {
+    "source": "Archduke_Franz_Ferdinand_of_Austria",
+    "target": "Maximilian_Duke_of_Hohenberg",
+    "type": "parent"
+  },
+  {
+    "source": "Blanca_of_Spain",
+    "target": "Archduke_Anton_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Blanca_of_Spain",
+    "target": "Archduke_Karl_Pius_of_Austria,_Prince_of_Tuscany",
+    "type": "parent"
+  },
+  {
+    "source": "Archduke_Leopold_Salvator_of_Austria",
+    "target": "Blanca_of_Spain",
+    "type": "spouse"
+  },
+  {
+    "source": "Leopold_II_Grand_Duke_of_Tuscany",
+    "target": "Archduke_Ludwig_Salvator_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Augustus_II_the_Strong",
+    "target": "Augustus_III_of_Poland",
+    "type": "parent"
+  },
+  {
+    "source": "Christiane_Eberhardine_of_Brandenburg_Bayreuth",
+    "target": "Augustus_III_of_Poland",
+    "type": "parent"
+  },
+  {
+    "source": "Augustus_III_of_Poland",
+    "target": "Frederick_Christian_Elector_of_Saxony",
+    "type": "parent"
+  },
+  {
+    "source": "Augustus_III_of_Poland",
+    "target": "Clemens_Wenceslaus_of_Saxony",
+    "type": "parent"
+  },
+  {
+    "source": "Elizabeth_of_Austria_1436",
+    "target": "Barbara_Jagiellon",
+    "type": "parent"
+  },
+  {
+    "source": "Barbara_Jagiellon",
+    "target": "George_Duke_of_Saxony",
+    "type": "spouse"
+  },
+  {
+    "source": "Princess_Margherita_of_Bourbon_Parma",
+    "target": "Blanca_de_Borbón",
+    "type": "parent"
+  },
+  {
+    "source": "George_Duke_of_Mecklenburg",
+    "target": "Borwin,_Duke_of_Mecklenburg",
+    "type": "parent"
+  },
+  {
+    "source": "Juan_Count_of_Montizon",
+    "target": "Carlos_de_Borbón_y_Austria-Este",
+    "type": "parent"
+  },
+  {
+    "source": "Philip_I_of_Castile",
+    "target": "Catherine_of_Austria,_Queen_of_Portugal",
+    "type": "parent"
+  },
+  {
+    "source": "Josephine_of_Lorraine",
+    "target": "Charles_Emmanuel,_Prince_of_Carignano",
+    "type": "parent"
+  },
+  {
+    "source": "Charles_Emmanuel_I,_Duke_of_Savoy",
+    "target": "Catherine_Michaela_of_Spain",
+    "type": "spouse"
+  },
+  {
+    "source": "Catherine_of_Lorraine",
+    "target": "Charles_II_Gonzaga,_Duke_of_Nevers",
+    "type": "parent"
+  },
+  {
+    "source": "John_of_Bohemia",
+    "target": "Charles_IV,_Holy_Roman_Emperor",
+    "type": "parent"
+  },
+  {
+    "source": "Charles_IV,_Holy_Roman_Emperor",
+    "target": "Anne_of_Bavaria",
+    "type": "spouse"
+  },
+  {
+    "source": "Charles_IV,_Holy_Roman_Emperor",
+    "target": "Elizabeth_of_Pomerania",
+    "type": "spouse"
+  },
+  {
+    "source": "Charles_IV,_Holy_Roman_Emperor",
+    "target": "Wenceslaus_IV_of_Bohemia",
+    "type": "parent"
+  },
+  {
+    "source": "Mary_of_Hungary_Queen_of_Naples",
+    "target": "Charles_Martel_of_Anjou",
+    "type": "parent"
+  },
+  {
+    "source": "Charles_Martel_of_Anjou",
+    "target": "Clementia_of_Habsburg",
+    "type": "spouse"
+  },
+  {
+    "source": "John_Christian_Count_Palatine_of_Sulzbach",
+    "target": "Charles_Theodore,_Elector_of_Bavaria",
+    "type": "parent"
+  },
+  {
+    "source": "Nicholas_Francis_Duke_of_Lorraine",
+    "target": "Charles_V,_Duke_of_Lorraine",
+    "type": "parent"
+  },
+  {
+    "source": "Claude_Francoise_of_Lorraine",
+    "target": "Charles_V,_Duke_of_Lorraine",
+    "type": "parent"
+  },
+  {
+    "source": "Philip_I_of_Castile",
+    "target": "Charles_V,_Holy_Roman_Emperor",
+    "type": "parent"
+  },
+  {
+    "source": "Charles_V,_Holy_Roman_Emperor",
+    "target": "Joanna_of_Austria_Princess_of_Portugal",
+    "type": "parent"
+  },
+  {
+    "source": "Christina_of_Saxony",
+    "target": "Christian_II_of_Denmark",
+    "type": "parent"
+  },
+  {
+    "source": "Claude_of_France",
+    "target": "Christina_of_Lorraine",
+    "type": "parent"
+  },
+  {
+    "source": "Anna_de_Medici",
+    "target": "Claudia_Felicitas_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Paul_Frederick_Grand_Duke_of_Mecklenburg_Schwerin",
+    "target": "Duchess_Luise_of_Mecklenburg-Schwerin",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Alexandrine_of_Prussia",
+    "target": "Duchess_Luise_of_Mecklenburg-Schwerin",
+    "type": "parent"
+  },
+  {
+    "source": "Duchess_Maria_Antonia_of_Bavaria",
+    "target": "Frederick_Christian_Elector_of_Saxony",
+    "type": "spouse"
+  },
+  {
+    "source": "Duke_Pius_August_in_Bavaria",
+    "target": "Duke_Maximilian_Joseph_in_Bavaria",
+    "type": "parent"
+  },
+  {
+    "source": "Duke_Maximilian_Joseph_in_Bavaria",
+    "target": "Ludwig_Wilhelm_Duke_in_Bavaria",
+    "type": "parent"
+  },
+  {
+    "source": "Duke_Maximilian_Joseph_in_Bavaria",
+    "target": "Duke_Karl_Theodor_in_Bavaria",
+    "type": "parent"
+  },
+  {
+    "source": "Duke_Maximilian_Joseph_in_Bavaria",
+    "target": "Marie_Sophie_of_Bavaria_Queen_of_the_Two_Sicilies",
+    "type": "parent"
+  },
+  {
+    "source": "Duke_Maximilian_Joseph_in_Bavaria",
+    "target": "Mathilde_Ludovika_Countess_of_Trani",
+    "type": "parent"
+  },
+  {
+    "source": "Duke_Maximilian_Joseph_in_Bavaria",
+    "target": "Sophie_Charlotte_Duchess_of_Alencon",
+    "type": "parent"
+  },
+  {
+    "source": "John_I_of_Portugal",
+    "target": "Edward,_King_of_Portugal",
+    "type": "parent"
+  },
+  {
+    "source": "Philippa_of_Lancaster",
+    "target": "Edward,_King_of_Portugal",
+    "type": "parent"
+  },
+  {
+    "source": "Joanna_of_Austria_Grand_Duchess_of_Tuscany",
+    "target": "Eleanor_de'_Medici",
+    "type": "parent"
+  },
+  {
+    "source": "Eleanor_of_Alburquerque",
+    "target": "Eleanor_of_Aragon,_Queen_of_Portugal",
+    "type": "parent"
+  },
+  {
+    "source": "Eleanor_of_Aragon,_Queen_of_Portugal",
+    "target": "Joan_of_Portugal",
+    "type": "parent"
+  },
+  {
+    "source": "Philip_I_of_Castile",
+    "target": "Eleanor_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Eleonore_of_Austria,_Queen_of_Poland",
+    "target": "Michael_Korybut_Wisniowiecki",
+    "type": "spouse"
+  },
+  {
+    "source": "Elizabeth_of_Carinthia",
+    "target": "Elisabeth_of_Austria,_Duchess_of_Lorraine",
+    "type": "parent"
+  },
+  {
+    "source": "Elisabeth_of_Austria,_Duchess_of_Lorraine",
+    "target": "Frederick_IV_Duke_of_Lorraine",
+    "type": "spouse"
+  },
+  {
+    "source": "Agnes_of_the_Palatinate",
+    "target": "Elisabeth_of_Bavaria,_Queen_of_Germany",
+    "type": "parent"
+  },
+  {
+    "source": "Henry_IV_of_France",
+    "target": "Elisabeth_of_France,_Queen_of_Spain",
+    "type": "parent"
+  },
+  {
+    "source": "Henry_II_of_France",
+    "target": "Elisabeth_of_Valois",
+    "type": "parent"
+  },
+  {
+    "source": "Catherine_de_Medici",
+    "target": "Elisabeth_of_Valois",
+    "type": "parent"
+  },
+  {
+    "source": "Elisabeth_of_Valois",
+    "target": "Catherine_Michelle_of_Spain",
+    "type": "parent"
+  },
+  {
+    "source": "Elizabeth_of_Bohemia_(1292–1330)",
+    "target": "John_of_Bohemia",
+    "type": "spouse"
+  },
+  {
+    "source": "Francesco_III_dEste_Duke_of_Modena",
+    "target": "Ercole_III_d'Este",
+    "type": "parent"
+  },
+  {
+    "source": "Charlotte_Aglaé_dOrleans",
+    "target": "Ercole_III_d'Este",
+    "type": "parent"
+  },
+  {
+    "source": "Ferdinand_Charles,_Archduke_of_Austria",
+    "target": "Anna_de_Medici_Archduchess_of_Austria",
+    "type": "spouse"
+  },
+  {
+    "source": "Philip_Duke_of_Parma",
+    "target": "Ferdinand_I,_Duke_of_Parma",
+    "type": "parent"
+  },
+  {
+    "source": "Ferdinand_III,_Grand_Duke_of_Tuscany",
+    "target": "Leopold_II_Grand_Duke_of_Tuscany",
+    "type": "parent"
+  },
+  {
+    "source": "John_II_of_Aragon",
+    "target": "Ferdinand_II_of_Aragon",
+    "type": "parent"
+  },
+  {
+    "source": "Juana_Enríquez",
+    "target": "Ferdinand_II_of_Aragon",
+    "type": "parent"
+  },
+  {
+    "source": "George_of_Saxony",
+    "target": "Frederick_Augustus_III_of_Saxony",
+    "type": "parent"
+  },
+  {
+    "source": "Johanna_of_Pfirt",
+    "target": "Frederick_III_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Francesco_I_Sforza",
+    "target": "Galeazzo_Maria_Sforza",
+    "type": "parent"
+  },
+  {
+    "source": "John_King_of_Saxony",
+    "target": "George,_King_of_Saxony",
+    "type": "parent"
+  },
+  {
+    "source": "Elizabeth_of_Carinthia",
+    "target": "Frederick_the_Fair",
+    "type": "parent"
+  },
+  {
+    "source": "Henry_VIII",
+    "target": "Elizabeth_I_of_England",
+    "type": "parent"
+  },
+  {
+    "source": "Henry_V_of_Legnica",
+    "target": "Henry_VI_the_Good",
+    "type": "parent"
+  },
+  {
+    "source": "Elizabeth_of_Carinthia",
+    "target": "Henry_the_Friendly",
+    "type": "parent"
+  },
+  {
+    "source": "Infanta_Maria_Ana_of_Portugal_(1843–1884)",
+    "target": "George_of_Saxony",
+    "type": "spouse"
+  },
+  {
+    "source": "Philip_I_of_Castile",
+    "target": "Isabella_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Catherine_Michaela_of_Spain",
+    "target": "Isabella_of_Savoy",
+    "type": "parent"
+  },
+  {
+    "source": "Isabella_of_Savoy",
+    "target": "Alfonso_III_dEste",
+    "type": "spouse"
+  },
+  {
+    "source": "Philipp_Wilhelm_Elector_Palatine",
+    "target": "Johann_Wilhelm,_Elector_Palatine",
+    "type": "parent"
+  },
+  {
+    "source": "Maximilian_Hereditary_Prince_of_Saxony",
+    "target": "John,_King_of_Saxony",
+    "type": "parent"
+  },
+  {
+    "source": "John_III_of_Portugal",
+    "target": "Catherine_of_Austria_Queen_of_Portugal",
+    "type": "spouse"
+  },
+  {
+    "source": "William_Duke_of_Jülich_Cleves_Berg",
+    "target": "John_William,_Duke_of_Jülich-Cleves-Berg",
+    "type": "parent"
+  },
+  {
+    "source": "Catherine_of_Austria_Queen_of_Portugal",
+    "target": "João_Manuel,_Prince_of_Portugal",
+    "type": "parent"
+  },
+  {
+    "source": "João_Manuel,_Prince_of_Portugal",
+    "target": "Joanna_of_Austria_Princess_of_Portugal",
+    "type": "spouse"
+  },
+  {
+    "source": "Julius_Henry_Duke_of_Saxe_Lauenburg",
+    "target": "Julius_Francis,_Duke_of_Saxe-Lauenburg",
+    "type": "parent"
+  },
+  {
+    "source": "William_Duke_of_Jülich_Cleves_Berg",
+    "target": "Karl_Friedrich_of_Jülich-Cleves-Berg",
+    "type": "parent"
+  },
+  {
+    "source": "Rostislav_Mikhailovich",
+    "target": "Kunigunda_of_Halych",
+    "type": "parent"
+  },
+  {
+    "source": "Anna_of_Hungary",
+    "target": "Kunigunda_of_Halych",
+    "type": "parent"
+  },
+  {
+    "source": "George_II_Landgrave_of_Hesse_Darmstadt",
+    "target": "Landgravine_Elisabeth_Amalie_of_Hesse-Darmstadt",
+    "type": "parent"
+  },
+  {
+    "source": "Sophia_Eleonore_of_Saxony",
+    "target": "Landgravine_Elisabeth_Amalie_of_Hesse-Darmstadt",
+    "type": "parent"
+  },
+  {
+    "source": "Elizabeth_of_Carinthia",
+    "target": "Leopold_I,_Duke_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Leopold_I_of_Belgium",
+    "target": "Princess_Charlotte_of_Wales",
+    "type": "spouse"
+  },
+  {
+    "source": "Louis,_Grand_Dauphin",
+    "target": "Philip_V_of_Spain",
+    "type": "parent"
+  },
+  {
+    "source": "Louis_II_of_Hungary",
+    "target": "Mary_of_Hungary",
+    "type": "spouse"
+  },
+  {
+    "source": "Louis_XVI",
+    "target": "Marie_Therese_Charlotte_of_France",
+    "type": "parent"
+  },
+  {
+    "source": "Marie_Leszczynska",
+    "target": "Louise-Élisabeth_of_France",
+    "type": "parent"
+  },
+  {
+    "source": "Louise-Élisabeth_of_France",
+    "target": "Philip_Duke_of_Parma",
+    "type": "spouse"
+  },
+  {
+    "source": "Luitpold_Prince_Regent_of_Bavaria",
+    "target": "Ludwig_III_of_Bavaria",
+    "type": "parent"
+  },
+  {
+    "source": "Catherine_of_Austria_Queen_of_Portugal",
+    "target": "Manuel,_Hereditary_Prince_of_Portugal_(1531–1537)",
+    "type": "parent"
+  },
+  {
+    "source": "Catherine_Michaela_of_Spain",
+    "target": "Margaret_of_Savoy,_Vicereine_of_Portugal",
+    "type": "parent"
+  },
+  {
+    "source": "Margaret_of_Savoy,_Vicereine_of_Portugal",
+    "target": "Francisco_IV_Gonzaga_Duke_of_Mantua",
+    "type": "spouse"
+  },
+  {
+    "source": "Maria_Amalia_of_Naples_and_Sicily",
+    "target": "Prince_Francois_Prince_of_Joinville",
+    "type": "parent"
+  },
+  {
+    "source": "Maria_Amalia_of_Naples_and_Sicily",
+    "target": "Prince_Antoine_Duke_of_Montpensier",
+    "type": "parent"
+  },
+  {
+    "source": "Maria_Anna_of_Austria",
+    "target": "John_V_of_Portugal",
+    "type": "spouse"
+  },
+  {
+    "source": "Maria_Beatrix_of_Austria-Este",
+    "target": "Juan_Count_of_Montizon",
+    "type": "spouse"
+  },
+  {
+    "source": "Luis_I_of_Portugal",
+    "target": "Maria_Pia_of_Savoy",
+    "type": "spouse"
+  },
+  {
+    "source": "Alderano_I_Cybo-Malaspina",
+    "target": "Maria_Teresa_Cybo-Malaspina",
+    "type": "parent"
+  },
+  {
+    "source": "Ricciarda_Gonzaga",
+    "target": "Maria_Teresa_Cybo-Malaspina",
+    "type": "parent"
+  },
+  {
+    "source": "Maria_of_Austria,_Holy_Roman_Empress",
+    "target": "Anna_of_Austria_Queen_of_Spain",
+    "type": "parent"
+  },
+  {
+    "source": "William_Duke_of_Julich-Cleves-Berg",
+    "target": "Marie_Eleonore_of_Cleves",
+    "type": "parent"
+  },
+  {
+    "source": "Marie_Eleonore_of_Cleves",
+    "target": "Anna_of_Prussia",
+    "type": "parent"
+  },
+  {
+    "source": "Archduke_Joseph_Palatine_of_Hungary",
+    "target": "Marie_Henriette_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Henry_IV_of_France",
+    "target": "Marie_de'_Medici",
+    "type": "spouse"
+  },
+  {
+    "source": "Isabella_of_Bourbon",
+    "target": "Mary_of_Burgundy",
+    "type": "parent"
+  },
+  {
+    "source": "Philip_I_of_Castile",
+    "target": "Mary_of_Hungary_(governor_of_the_Netherlands)",
+    "type": "parent"
+  },
+  {
+    "source": "Sophie_Duchess_of_Hohenberg",
+    "target": "Maximilian,_Duke_of_Hohenberg",
+    "type": "parent"
+  },
+  {
+    "source": "Frederick_Christian_Elector_of_Saxony",
+    "target": "Maximilian,_Hereditary_Prince_of_Saxony",
+    "type": "parent"
+  },
+  {
+    "source": "Theresa_Kunegunda_Sobieska",
+    "target": "Maximilian_II_Emanuel",
+    "type": "spouse"
+  },
+  {
+    "source": "Frederick_Michael_Count_Palatine_of_Zweibrucken",
+    "target": "Maximilian_I_Joseph_of_Bavaria",
+    "type": "parent"
+  },
+  {
+    "source": "Augusta_Wilhelmine_of_Hesse-Darmstadt",
+    "target": "Maximilian_I_Joseph_of_Bavaria",
+    "type": "spouse"
+  },
+  {
+    "source": "Meinhard_I_Count_of_Gorizia",
+    "target": "Meinhard,_Duke_of_Carinthia",
+    "type": "parent"
+  },
+  {
+    "source": "Jeremi_Wisniowiecki",
+    "target": "Michał_Korybut_Wiśniowiecki",
+    "type": "parent"
+  },
+  {
+    "source": "John_VI_of_Portugal",
+    "target": "Miguel_I_of_Portugal",
+    "type": "parent"
+  },
+  {
+    "source": "John_VI_of_Portugal",
+    "target": "Pedro_I_of_Brazil",
+    "type": "parent"
+  },
+  {
+    "source": "Philip_V_of_Spain",
+    "target": "Philip,_Duke_of_Parma",
+    "type": "parent"
+  },
+  {
+    "source": "Magdalene_of_Bavaria",
+    "target": "Philip_William,_Elector_Palatine",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Leopoldina_of_Brazil",
+    "target": "Prince_August_Leopold_of_Saxe-Coburg_and_Gotha",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Adelgunde_of_Bavaria,_Princess_of_Hohenzollern",
+    "target": "Wilhelm_Prince_of_Hohenzollern",
+    "type": "spouse"
+  },
+  {
+    "source": "Prince_Jean_Duke_of_Guise",
+    "target": "Princess_Anne_of_Orléans",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Clémentine_of_Belgium",
+    "target": "Prince_Napoleon_Victor_Bonaparte",
+    "type": "spouse"
+  },
+  {
+    "source": "Princess_Ludovika_of_Bavaria",
+    "target": "Marie_Sophie_of_Bavaria",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Ludovika_of_Bavaria",
+    "target": "Mathilde_Ludovika_Countess_of_Trani",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Ludovika_of_Bavaria",
+    "target": "Sophie_Charlotte_Duchess_of_Alencon",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Maria_Clotilde_of_Savoy",
+    "target": "Prince_Napoleon_Joseph_Bonaparte",
+    "type": "spouse"
+  },
+  {
+    "source": "Maximilian_Hereditary_Prince_of_Saxony",
+    "target": "Princess_Maria_Ferdinanda_of_Saxony",
+    "type": "parent"
+  },
+  {
+    "source": "Robert,_Archduke_of_Austria-Este",
+    "target": "Princess_Margherita_of_Savoy_Aosta",
+    "type": "spouse"
+  },
+  {
+    "source": "Luitpold_Prince_Regent_of_Bavaria",
+    "target": "Princess_Therese_of_Bavaria",
+    "type": "parent"
+  },
+  {
+    "source": "Frederick_IV_Duke_of_Lorraine",
+    "target": "Rudolph,_Duke_of_Lorraine",
+    "type": "parent"
+  },
+  {
+    "source": "Rudolph,_Duke_of_Lorraine",
+    "target": "John_I_Duke_of_Lorraine",
+    "type": "parent"
+  },
+  {
+    "source": "Joanna_of_Austria_Princess_of_Portugal",
+    "target": "Sebastian,_King_of_Portugal",
+    "type": "parent"
+  },
+  {
+    "source": "Christopher_Bathory",
+    "target": "Sigismund_Báthory",
+    "type": "parent"
+  },
+  {
+    "source": "Bona_Sforza",
+    "target": "Sigismund_II_Augustus",
+    "type": "parent"
+  },
+  {
+    "source": "Sigismund_II_Augustus",
+    "target": "Elizabeth_of_Austria_1526",
+    "type": "spouse"
+  },
+  {
+    "source": "Sigismund_II_Augustus",
+    "target": "Barbara_Radziwill",
+    "type": "spouse"
+  },
+  {
+    "source": "Sigismund_II_Augustus",
+    "target": "Catherine_of_Austria_1533",
+    "type": "spouse"
+  },
+  {
+    "source": "Elizabeth_of_Austria_1436",
+    "target": "Sophia_Jagiellon,_Margravine_of_Brandenburg-Ansbach",
+    "type": "parent"
+  },
+  {
+    "source": "Sophia_Jagiellon,_Margravine_of_Brandenburg-Ansbach",
+    "target": "Frederick_I_Margrave_of_Brandenburg_Ansbach",
+    "type": "spouse"
+  },
+  {
+    "source": "Susanna_of_Bavaria",
+    "target": "Casimir_Margrave_of_Brandenburg_Bayreuth",
+    "type": "spouse"
+  },
+  {
+    "source": "Catherine_Michaela_of_Spain",
+    "target": "Thomas_Francis,_Prince_of_Carignano",
+    "type": "parent"
+  },
+  {
+    "source": "Catherine_Michaela_of_Spain",
+    "target": "Victor_Amadeus_I,_Duke_of_Savoy",
+    "type": "parent"
+  },
+  {
+    "source": "Marie_de_Bourbon,_Countess_of_Soissons",
+    "target": "Thomas_Francis,_Prince_of_Carignano",
+    "type": "spouse"
+  },
+  {
+    "source": "Christine_of_France",
+    "target": "Victor_Amadeus_I,_Duke_of_Savoy",
+    "type": "spouse"
+  },
+  {
+    "source": "Anne_of_Foix-Candale",
+    "target": "Vladislaus_II_of_Hungary",
+    "type": "spouse"
+  },
+  {
+    "source": "Viola_of_Teschen",
+    "target": "Wenceslaus_III_of_Bohemia",
+    "type": "spouse"
+  },
+  {
+    "source": "Kunigunda_of_Slavonia",
+    "target": "Wenceslaus_II_of_Bohemia",
+    "type": "parent"
+  },
+  {
+    "source": "Frederick_I,_Elector_of_Saxony",
+    "target": "William_III,_Landgrave_of_Thuringia",
+    "type": "parent"
+  },
+  {
+    "source": "Archduke_Karl_Stephan_of_Austria",
+    "target": "Archduchess_Maria_Theresa_of_Austria_(1862–1933)",
+    "type": "spouse"
+  },
+  {
+    "source": "John,_King_of_Denmark",
+    "target": "Christian_II_of_Denmark",
+    "type": "parent"
+  },
+  {
+    "source": "Manuel_I_of_Portugal",
+    "target": "John_III_of_Portugal",
+    "type": "parent"
+  },
+  {
+    "source": "Margaret_II,_Countess_of_Hainaut",
+    "target": "Albert_I,_Duke_of_Bavaria",
+    "type": "parent"
+  },
+  {
+    "source": "Margaret_of_Brzeg",
+    "target": "Albert_I,_Duke_of_Bavaria",
+    "type": "spouse"
+  },
+  {
+    "source": "Albert_I,_Duke_of_Bavaria",
+    "target": "William_II,_Duke_of_Bavaria",
+    "type": "parent"
+  },
+  {
+    "source": "Albert_I,_Duke_of_Bavaria",
+    "target": "Albert_II,_Duke_of_Bavaria",
+    "type": "parent"
+  },
+  {
+    "source": "Albert_I,_Duke_of_Bavaria",
+    "target": "John_III,_Duke_of_Bavaria",
+    "type": "parent"
+  },
+  {
+    "source": "Elisabeth_of_Bavaria_(1837–1898)",
+    "target": "Archduchess_Gisela_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Anna_of_Saxony_(1903)",
+    "target": "Archduchess_Ilona_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Archduke_Joseph_Francis_of_Austria",
+    "target": "Princess_Anna_of_Saxony_(1903)",
+    "type": "spouse"
+  },
+  {
+    "source": "Archduchess_Isabella_Clara_of_Austria",
+    "target": "Charles_II_Duke_of_Mantua_and_Montferrat",
+    "type": "spouse"
+  },
+  {
+    "source": "Princess_Maria_Immacolata_of_Bourbon_Two_Sicilies",
+    "target": "Archduchess_Karoline_Marie_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Archduke_Karl_Salvator_of_Austria",
+    "target": "Princess_Maria_Immacolata_of_Bourbon_Two_Sicilies",
+    "type": "spouse"
+  },
+  {
+    "source": "Princess_Maria_Immacolata_of_Bourbon_Two_Sicilies",
+    "target": "Archduke_Leopold_Salvator_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Ferdinand_IV_Grand_Duke_of_Tuscany",
+    "target": "Archduchess_Louise_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Ferdinand_IV_Grand_Duke_of_Tuscany",
+    "target": "Archduchess_Maria_Antonietta_of_Austria_(1858–1883)",
+    "type": "parent"
+  },
+  {
+    "source": "Archduke_Friedrich_Duke_of_Teschen",
+    "target": "Archduchess_Maria_Anna_of_Austria_(born_1882)",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Isabella_of_Croy",
+    "target": "Archduchess_Maria_Anna_of_Austria_(born_1882)",
+    "type": "parent"
+  },
+  {
+    "source": "Archduke_Friedrich_Duke_of_Teschen",
+    "target": "Princess_Isabella_of_Croy",
+    "type": "spouse"
+  },
+  {
+    "source": "Archduchess_Elisabeth_Franziska_of_Austria",
+    "target": "Archduke_Friedrich_Duke_of_Teschen",
+    "type": "parent"
+  },
+  {
+    "source": "Blanca_de_Borbon",
+    "target": "Archduchess_Margaretha_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Archduke_Leopold_Salvator_of_Austria",
+    "target": "Blanca_de_Borbon",
+    "type": "spouse"
+  },
+  {
+    "source": "Archduke_Karl_Salvator_of_Austria",
+    "target": "Archduchess_Maria_Theresa_of_Austria_1862",
+    "type": "parent"
+  },
+  {
+    "source": "Archduke_Friedrich_Duke_of_Teschen",
+    "target": "Archduchess_Maria_Anna_of_Austria_1882",
+    "type": "parent"
+  },
+  {
+    "source": "Ferdinand_II,_Holy_Roman_Emperor",
+    "target": "Archduchess_Maria_Anna_of_Austria_(born_1610)",
+    "type": "parent"
+  },
+  {
+    "source": "Leopold_II,_Holy_Roman_Emperor",
+    "target": "Archduke_John_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Leopold_II,_Holy_Roman_Emperor",
+    "target": "Archduke_Joseph_of_Austria_(Palatine_of_Hungary)",
+    "type": "parent"
+  },
+  {
+    "source": "Leopold_II,_Holy_Roman_Emperor",
+    "target": "Archduke_Louis_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Charles_II,_Archduke_of_Austria",
+    "target": "Archduchess_Maria_Maddalena_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Maria_Anna_of_Bavaria_(born_1574)",
+    "target": "Archduchess_Maria_Maddalena_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Charles_II,_Archduke_of_Austria",
+    "target": "Archduke_Maximilian_Ernest_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Augustus_III_of_Poland",
+    "target": "Maria_Josepha_of_Saxony,_Dauphine_of_France",
+    "type": "parent"
+  },
+  {
+    "source": "Augustus_III_of_Poland",
+    "target": "Prince_Charles_of_Saxony,_Duke_of_Courland",
+    "type": "parent"
+  },
+  {
+    "source": "Bianca_Maria_Sforza",
+    "target": "Maximilian_I,_Holy_Roman_Emperor",
+    "type": "spouse"
+  },
+  {
+    "source": "Carlos,_Duke_of_Madrid",
+    "target": "Blanca_de_Borbón",
+    "type": "parent"
+  },
+  {
+    "source": "Philip_III_of_France",
+    "target": "Blanche_of_France,_Duchess_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Maria_of_Brabant,_Queen_of_France",
+    "target": "Blanche_of_France,_Duchess_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Archduchess_Maria_Beatrix_of_Austria-Este",
+    "target": "Carlos_de_Borbón_y_Austria-Este",
+    "type": "parent"
+  },
+  {
+    "source": "Charles_Louis,_Hereditary_Prince_of_Baden",
+    "target": "Caroline_of_Baden",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Amalie_of_Hesse-Darmstadt",
+    "target": "Caroline_of_Baden",
+    "type": "parent"
+  },
+  {
+    "source": "Victor_Amadeus_II,_Prince_of_Carignano",
+    "target": "Charles_Emmanuel,_Prince_of_Carignano",
+    "type": "parent"
+  },
+  {
+    "source": "Charles_Emmanuel,_Prince_of_Carignano",
+    "target": "Charles_Albert_of_Sardinia",
+    "type": "parent"
+  },
+  {
+    "source": "Emmanuel_Philibert,_Duke_of_Savoy",
+    "target": "Charles_Emmanuel_I,_Duke_of_Savoy",
+    "type": "parent"
+  },
+  {
+    "source": "Margaret_of_France,_Duchess_of_Berry",
+    "target": "Charles_Emmanuel_I,_Duke_of_Savoy",
+    "type": "parent"
+  },
+  {
+    "source": "Charles_I_Gonzaga,_Duke_of_Mantua",
+    "target": "Charles_II_Gonzaga,_Duke_of_Nevers",
+    "type": "parent"
+  },
+  {
+    "source": "Charles_II_of_Naples",
+    "target": "Charles_Martel_of_Anjou",
+    "type": "parent"
+  },
+  {
+    "source": "Maria_Henriette_de_La_Tour_dAuvergne",
+    "target": "Charles_Theodore,_Elector_of_Bavaria",
+    "type": "parent"
+  },
+  {
+    "source": "Charles_Theodore,_Elector_of_Bavaria",
+    "target": "Countess_Palatine_Elisabeth_Auguste_of_Sulzbach",
+    "type": "spouse"
+  },
+  {
+    "source": "Leopold,_Duke_of_Lorraine",
+    "target": "Charles_V,_Duke_of_Lorraine",
+    "type": "parent"
+  },
+  {
+    "source": "Catherine_of_Austria,_Queen_of_Poland",
+    "target": "Sigismund_II_Augustus",
+    "type": "spouse"
+  },
+  {
+    "source": "Christina_of_Denmark",
+    "target": "Francis_II_Sforza,_Duke_of_Milan",
+    "type": "spouse"
+  },
+  {
+    "source": "Christina_of_Denmark",
+    "target": "Francis_I,_Duke_of_Lorraine",
+    "type": "spouse"
+  },
+  {
+    "source": "Christina_of_Lorraine",
+    "target": "Ferdinando_I_de_Medici,_Grand_Duke_of_Tuscany",
+    "type": "spouse"
+  },
+  {
+    "source": "Clementia_of_Hungary",
+    "target": "Louis_X_of_France",
+    "type": "spouse"
+  },
+  {
+    "source": "Cosimo_II_de'_Medici",
+    "target": "Maria_Maddalena_of_Austria",
+    "type": "spouse"
+  },
+  {
+    "source": "Dorothea_of_Denmark,_Electress_Palatine",
+    "target": "Frederick_II,_Elector_Palatine",
+    "type": "spouse"
+  },
+  {
+    "source": "Duchess_Luise_of_Mecklenburg-Schwerin",
+    "target": "Hugo,_Prince_of_Windisch-Graetz",
+    "type": "spouse"
+  },
+  {
+    "source": "Duchess_Maria_Anna_Josepha_of_Bavaria",
+    "target": "Louis_George,_Margrave_of_Baden-Baden",
+    "type": "spouse"
+  },
+  {
+    "source": "Louise_Élisabeth_of_France",
+    "target": "Ferdinand_I,_Duke_of_Parma",
+    "type": "parent"
+  },
+  {
+    "source": "Ferdinand_I,_Duke_of_Parma",
+    "target": "Archduchess_Maria_Amalia_of_Austria",
+    "type": "spouse"
+  },
+  {
+    "source": "Ferdinand_III,_Grand_Duke_of_Tuscany",
+    "target": "Archduchess_Maria_Theresa_of_Austria_(1801–1855)",
+    "type": "parent"
+  },
+  {
+    "source": "Maria_Isabella_of_Spain",
+    "target": "Ferdinand_II_of_the_Two_Sicilies",
+    "type": "parent"
+  },
+  {
+    "source": "Ferdinand_II_of_the_Two_Sicilies",
+    "target": "Maria_Christina_of_Savoy",
+    "type": "spouse"
+  },
+  {
+    "source": "Ferdinand_II_of_the_Two_Sicilies",
+    "target": "Maria_Theresa_of_Austria_(1816–1867)",
+    "type": "spouse"
+  },
+  {
+    "source": "Ferdinand_II_of_the_Two_Sicilies",
+    "target": "Princess_Maria_Immaculata_of_Bourbon-Two_Sicilies",
+    "type": "parent"
+  },
+  {
+    "source": "Fiona_Campbell-Walter",
+    "target": "Archduke_Alexander_of_Austria",
+    "type": "spouse"
+  },
+  {
+    "source": "Charles_Alexander,_Duke_of_Württemberg",
+    "target": "Frederick_II_Eugene,_Duke_of_Württemberg",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Marie_Auguste_of_Thurn_and_Taxis",
+    "target": "Frederick_II_Eugene,_Duke_of_Württemberg",
+    "type": "parent"
+  },
+  {
+    "source": "Charles_Christian,_Prince_of_Nassau-Weilburg",
+    "target": "Frederick_William,_Prince_of_Nassau-Weilburg",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Carolina_of_Orange-Nassau",
+    "target": "Frederick_William,_Prince_of_Nassau-Weilburg",
+    "type": "parent"
+  },
+  {
+    "source": "Bianca_Maria_Visconti",
+    "target": "Galeazzo_Maria_Sforza",
+    "type": "parent"
+  },
+  {
+    "source": "George,_King_of_Saxony",
+    "target": "Infanta_Maria_Ana_of_Portugal",
+    "type": "spouse"
+  },
+  {
+    "source": "Hedwig_Jagiellon,_Duchess_of_Bavaria",
+    "target": "George,_Duke_of_Bavaria",
+    "type": "spouse"
+  },
+  {
+    "source": "Charles_Ferdinand,_Duke_of_Berry",
+    "target": "Henri,_Count_of_Chambord",
+    "type": "parent"
+  },
+  {
+    "source": "Charles_I_of_England",
+    "target": "Henrietta_of_England",
+    "type": "parent"
+  },
+  {
+    "source": "Henrietta_Maria_of_France",
+    "target": "Henrietta_of_England",
+    "type": "parent"
+  },
+  {
+    "source": "Otto_V,_Margrave_of_Brandenburg-Salzwedel",
+    "target": "Herman,_Margrave_of_Brandenburg-Salzwedel",
+    "type": "parent"
+  },
+  {
+    "source": "Ferdinand_II_of_Portugal",
+    "target": "Infanta_Maria_Ana_of_Portugal_(1843–1884)",
+    "type": "parent"
+  },
+  {
+    "source": "Infanta_María_Teresa_of_Spain",
+    "target": "Prince_Ferdinand_of_Bavaria",
+    "type": "spouse"
+  },
+  {
+    "source": "Kunigunda_of_Halych",
+    "target": "Ottokar_II_of_Bohemia",
+    "type": "spouse"
+  },
+  {
+    "source": "Albert_I_of_Germany",
+    "target": "Leopold_II,_Duke_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Leopold_II,_Holy_Roman_Emperor",
+    "target": "Archduke_Charles,_Duke_of_Teschen",
+    "type": "parent"
+  },
+  {
+    "source": "Leopold_II,_Holy_Roman_Emperor",
+    "target": "Marie_Caroline_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Leopold_I_of_Belgium",
+    "target": "Prince_Philippe,_Count_of_Flanders",
+    "type": "parent"
+  },
+  {
+    "source": "Maria_Anna_of_Bavaria_(born_1574)",
+    "target": "Leopold_V,_Archduke_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Louis_XIV_of_France",
+    "target": "Louis,_Grand_Dauphin",
+    "type": "parent"
+  },
+  {
+    "source": "Louis,_Grand_Dauphin",
+    "target": "Duchess_Maria_Anna_Victoria_of_Bavaria",
+    "type": "spouse"
+  },
+  {
+    "source": "Louis,_Grand_Dauphin",
+    "target": "Charles,_Duke_of_Berry",
+    "type": "parent"
+  },
+  {
+    "source": "Maria_Anna_Victoria_of_Bavaria",
+    "target": "Louis_François,_Duke_of_Anjou",
+    "type": "parent"
+  },
+  {
+    "source": "Louis_IV,_Holy_Roman_Emperor",
+    "target": "Margaret_of_Brieg",
+    "type": "spouse"
+  },
+  {
+    "source": "Archduchess_Maria_Amalia_of_Austria",
+    "target": "Louis_I_of_Etruria",
+    "type": "parent"
+  },
+  {
+    "source": "Louis_I_of_Etruria",
+    "target": "Maria_Luisa_of_Spain,_Duchess_of_Lucca",
+    "type": "spouse"
+  },
+  {
+    "source": "Louis_XVI_of_France",
+    "target": "Louis_Joseph,_Dauphin_of_France",
+    "type": "parent"
+  },
+  {
+    "source": "Louis_Ferdinand,_Dauphin_of_France",
+    "target": "Louis_XVI",
+    "type": "parent"
+  },
+  {
+    "source": "Maria_Josepha_of_Saxony",
+    "target": "Louis_XVI",
+    "type": "parent"
+  },
+  {
+    "source": "Louis_XV_of_France",
+    "target": "Louise-Élisabeth_of_France",
+    "type": "parent"
+  },
+  {
+    "source": "Archduchess_Anna_of_Austria_(1528–1590)",
+    "target": "Maria_Anna_of_Bavaria_(born_1551)",
+    "type": "parent"
+  },
+  {
+    "source": "Ferdinand_I_of_the_Two_Sicilies",
+    "target": "Maria_Anna_of_Naples_and_Sicily",
+    "type": "parent"
+  },
+  {
+    "source": "Maria_Teresa_of_Austria-Este",
+    "target": "Maria_Anna_of_Savoy",
+    "type": "parent"
+  },
+  {
+    "source": "Maria_Antonia_of_Austria",
+    "target": "Maximilian_II_Emanuel,_Elector_of_Bavaria",
+    "type": "spouse"
+  },
+  {
+    "source": "Ferdinand_I_of_the_Two_Sicilies",
+    "target": "Maria_Cristina_of_Naples_and_Sicily",
+    "type": "parent"
+  },
+  {
+    "source": "Maria_Cristina_of_Naples_and_Sicily",
+    "target": "Charles_Felix_of_Sardinia",
+    "type": "spouse"
+  },
+  {
+    "source": "Claudia_de_Medici",
+    "target": "Maria_Leopoldine_of_Austria",
+    "type": "parent"
+  },
+  {
+    "source": "Archduke_Ferdinand_Karl_of_Austria-Este",
+    "target": "Maria_Ludovika_of_Austria-Este",
+    "type": "parent"
+  },
+  {
+    "source": "Maria_Theresa_of_Austria,_Queen_of_Sardinia",
+    "target": "Charles_Albert_of_Sardinia",
+    "type": "spouse"
+  },
+  {
+    "source": "Maximilian_III_Joseph",
+    "target": "Maria_Anna_Sophia_of_Saxony",
+    "type": "spouse"
+  },
+  {
+    "source": "Henriette_Adelaide_of_Savoy",
+    "target": "Maximilian_II_Emanuel",
+    "type": "parent"
+  },
+  {
+    "source": "Maria_Franziska_of_Sulzbach",
+    "target": "Maximilian_I_Joseph_of_Bavaria",
+    "type": "parent"
+  },
+  {
+    "source": "Michał_Korybut_Wiśniowiecki",
+    "target": "Eleonora_Maria_of_Austria",
+    "type": "spouse"
+  },
+  {
+    "source": "Carlota_Joaquina_of_Spain",
+    "target": "Miguel_I_of_Portugal",
+    "type": "parent"
+  },
+  {
+    "source": "Carlota_Joaquina_of_Spain",
+    "target": "Pedro_I_of_Brazil",
+    "type": "parent"
+  },
+  {
+    "source": "Charles_I_of_Austria",
+    "target": "Otto_von_Habsburg",
+    "type": "parent"
+  },
+  {
+    "source": "Zita_of_Bourbon-Parma",
+    "target": "Otto_von_Habsburg",
+    "type": "parent"
+  },
+  {
+    "source": "Elisabeth_Farnese",
+    "target": "Philip,_Duke_of_Parma",
+    "type": "parent"
+  },
+  {
+    "source": "Philip,_Duke_of_Parma",
+    "target": "Louise_Elisabeth_of_France",
+    "type": "spouse"
+  },
+  {
+    "source": "Philip_William,_Elector_Palatine",
+    "target": "Elisabeth_Amalie_of_Hesse-Darmstadt",
+    "type": "spouse"
+  },
+  {
+    "source": "Louis_XIII_of_France",
+    "target": "Philippe_I,_Duke_of_Orléans",
+    "type": "parent"
+  },
+  {
+    "source": "Archduchess_Maria_Theresa_of_Austria_(1816-1867)",
+    "target": "Prince_Alfonso,_Count_of_Caserta",
+    "type": "parent"
+  },
+  {
+    "source": "Prince_Ludwig_August_of_Saxe-Coburg_and_Gotha",
+    "target": "Prince_August_Leopold_of_Saxe-Coburg_and_Gotha",
+    "type": "parent"
+  },
+  {
+    "source": "Prince_August_of_Saxe-Coburg_and_Gotha",
+    "target": "Ferdinand_I_of_Bulgaria",
+    "type": "parent"
+  },
+  {
+    "source": "Élisabeth_Charlotte_dOrléans",
+    "target": "Prince_Charles_Alexander_of_Lorraine",
+    "type": "parent"
+  },
+  {
+    "source": "Prince_Charles_Alexander_of_Lorraine",
+    "target": "Archduchess_Maria_Anna_of_Austria_(1718-1744)",
+    "type": "spouse"
+  },
+  {
+    "source": "Archduchess_Maria_Theresa_of_Austria_(1816-1867)",
+    "target": "Prince_Gaetan,_Count_of_Girgenti",
+    "type": "parent"
+  },
+  {
+    "source": "Prince_Leopold_of_Bavaria",
+    "target": "Prince_Georg_of_Bavaria",
+    "type": "parent"
+  },
+  {
+    "source": "Archduchess_Gisela_of_Austria",
+    "target": "Prince_Georg_of_Bavaria",
+    "type": "parent"
+  },
+  {
+    "source": "Archduchess_Maria_Theresia_of_Austria-Este",
+    "target": "Prince_Karl_of_Bavaria_(1874–1927)",
+    "type": "parent"
+  },
+  {
+    "source": "Prince_Louis,_Count_of_Trani",
+    "target": "Mathilde_Ludovika_in_Bavaria",
+    "type": "spouse"
+  },
+  {
+    "source": "Prince_Philippe,_Count_of_Paris",
+    "target": "Prince_Philippe,_Duke_of_Orléans",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Marie_Isabelle_of_Orléans",
+    "target": "Prince_Philippe,_Duke_of_Orléans",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Adelgunde_of_Bavaria,_Duchess_of_Modena",
+    "target": "Francesco_V,_Duke_of_Modena",
+    "type": "spouse"
+  },
+  {
+    "source": "Archduchess_Maria_Theresia_of_Austria-Este",
+    "target": "Princess_Adelgunde_of_Bavaria,_Princess_of_Hohenzollern",
+    "type": "parent"
+  },
+  {
+    "source": "Louis_Philippe_I",
+    "target": "Princess_Clémentine_of_Orléans",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Clémentine_of_Orléans",
+    "target": "Ferdinand_I_of_Bulgaria",
+    "type": "parent"
+  },
+  {
+    "source": "Frederick_William,_Margrave_of_Brandenburg-Schwedt",
+    "target": "Princess_Friederike_of_Brandenburg-Schwedt",
+    "type": "parent"
+  },
+  {
+    "source": "Ferdinand_I_of_Romania",
+    "target": "Princess_Ileana_of_Romania",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Marie_of_Edinburgh",
+    "target": "Princess_Ileana_of_Romania",
+    "type": "parent"
+  },
+  {
+    "source": "Alfred,_Hereditary_Prince_of_Salm-Salm",
+    "target": "Princess_Isabelle_of_Salm-Salm",
+    "type": "parent"
+  },
+  {
+    "source": "Princess_Januária_of_Brazil",
+    "target": "Prince_Louis,_Count_of_Aquila",
+    "type": "spouse"
+  },
+  {
+    "source": "Princess_Louise_of_Belgium",
+    "target": "Prince_Philipp_of_Saxe-Coburg_and_Gotha",
+    "type": "spouse"
+  },
+  {
+    "source": "Sabina_of_Bavaria,_Duchess_of_Württemberg",
+    "target": "Ulrich,_Duke_of_Württemberg",
+    "type": "spouse"
+  },
+  {
+    "source": "Sabina_of_Bavaria,_Duchess_of_Württemberg",
+    "target": "Christoph,_Duke_of_Württemberg",
+    "type": "parent"
+  },
+  {
+    "source": "John_Manuel,_Prince_of_Portugal",
+    "target": "Sebastian,_King_of_Portugal",
+    "type": "parent"
+  },
+  {
+    "source": "Sibylle_of_Saxe-Lauenburg",
+    "target": "Louis_William,_Margrave_of_Baden-Baden",
+    "type": "spouse"
+  },
+  {
+    "source": "Sibylle_of_Saxe-Lauenburg",
+    "target": "Louis_George,_Margrave_of_Baden-Baden",
+    "type": "parent"
+  },
+  {
+    "source": "Sigismund_Báthory",
+    "target": "Archduchess_Maria_Christina_of_Austria_(1574–1621)",
+    "type": "spouse"
+  },
+  {
+    "source": "Thomas_Francis,_Prince_of_Carignano",
+    "target": "Emmanuel_Philibert,_Prince_of_Carignano",
+    "type": "parent"
+  },
+  {
+    "source": "Victor_Amadeus_I,_Duke_of_Savoy",
+    "target": "Charles_Emmanuel_II,_Duke_of_Savoy",
+    "type": "parent"
+  },
+  {
+    "source": "Victor_Amadeus_III_of_Sardinia",
+    "target": "Victor_Emmanuel_I",
+    "type": "parent"
+  },
+  {
+    "source": "Maria_Antonia_Ferdinanda_of_Spain",
+    "target": "Victor_Emmanuel_I",
+    "type": "parent"
+  },
+  {
+    "source": "Victor_Emmanuel_I",
+    "target": "Maria_Theresa_of_Austria_(1767–1827)",
+    "type": "spouse"
+  },
+  {
+    "source": "Karl_Louis,_Prince_of_Anhalt-Bernburg-Schaumburg-Hoym",
+    "target": "Victor_II,_Prince_of_Anhalt-Bernburg-Schaumburg-Hoym",
+    "type": "parent"
+  },
+  {
+    "source": "Władysław_IV_Vasa",
+    "target": "Marie_Louise_Gonzaga",
+    "type": "spouse"
   }
 ]

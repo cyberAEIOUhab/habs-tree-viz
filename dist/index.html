@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
-  <script type="module" crossorigin src="/habs-tree-viz/assets/index-CnUBg5yz.js"></script>
-  <link rel="stylesheet" crossorigin href="/habs-tree-viz/assets/index-u1sbywjQ.css">
+  <script type="module" crossorigin src="/habs-tree-viz/assets/index-orBfXLye.js"></script>
+  <link rel="stylesheet" crossorigin href="/habs-tree-viz/assets/index-BPCvR1kr.css">
 </head>
 <body>
   <!-- ==================== Homepage ==================== -->
@@ -113,6 +113,7 @@
     <div id="mode-toggle">
       <button id="mode-shortest" class="mode-btn active">关系最短路径</button>
       <button id="mode-other" class="mode-btn">其他路径</button>
+      <button id="mode-kinship" class="mode-btn">血缘关系查询</button>
     </div>
 
     <!-- Search -->
@@ -137,6 +138,12 @@
         <span id="year-min-label">1000</span>
         <span id="year-max-label">2000</span>
       </div>
+    </div>
+
+    <!-- Kinship ancestor buttons panel -->
+    <div id="kinship-ancestors-panel">
+      <div class="ka-title">共同祖先</div>
+      <div id="kinship-ancestors-list"></div>
     </div>
 
     <!-- Path panel -->

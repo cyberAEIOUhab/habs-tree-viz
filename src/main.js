@@ -97,6 +97,12 @@ let otherPathB = null;           // second selected node id (终点)
 let otherPathC = null;           // third selected node id (中间人)
 let otherPathResult = null;      // { type, mainPathNodeIds, mainPathEdgeIndices, cNodeId, dNodeId, cdEdgeIdx, cdRelation }
 
+let kinshipPersonA = null;       // first selected person for kinship mode
+let kinshipPersonB = null;       // second selected person for kinship mode
+let kinshipResult = null;        // { type:'single'|'dual', F?, r?, commonAncestors? }
+let highlightedAncestor = null;  // currently highlighted common ancestor id
+let highlightedPaths = null;     // { nodeIds: Set, edgeIndices: Set }
+
 let filterState = { habsburg: true, consort: true, relative: true };
 let yearRange = [null, null];    // [min, max] – set after data load
 
@@ -590,6 +596,225 @@ function findOtherPath(aId, bId, cId) {
   return bestResult; // null if neither case worked
 }
 
+/* ============================================================
+   Kinship helpers (Wright's coefficient)
+   ============================================================ */
+
+// Cache for F and r values – cleared per kinship query
+let fCache = new Map();
+let rCache = new Map();
+
+function clearKinshipCaches() {
+  fCache = new Map();
+  rCache = new Map();
+}
+
+/**
+ * DFS following ONLY parent edges upward (child→parent).
+ * Returns Map: ancestorId → array of paths, each path is [personId, ..., ancestorId].
+ * Uses per-path visited sets so inbreeding loops produce multiple paths.
+ */
+function findAllAncestorPaths(personId, maxDepth = 15) {
+  const result = new Map();
+
+  function dfs(currentId, path, visited) {
+    if (path.length - 1 > maxDepth) return;
+
+    const edgeIndices = adjIndex.get(currentId) || [];
+    for (const idx of edgeIndices) {
+      const edge = edges[idx];
+      if (edge.type !== 'parent') continue;
+
+      const srcId = typeof edge.source === 'object' ? edge.source.id : edge.source;
+      const tgtId = typeof edge.target === 'object' ? edge.target.id : edge.target;
+
+      // Go upward: current must be the child (target), parent is source
+      if (currentId !== tgtId) continue;
+      const parentId = srcId;
+
+      if (visited.has(parentId)) continue;
+
+      const newPath = [...path, parentId];
+      const newVisited = new Set(visited);
+      newVisited.add(parentId);
+
+      if (!result.has(parentId)) {
+        result.set(parentId, []);
+      }
+      result.get(parentId).push(newPath);
+
+      dfs(parentId, newPath, newVisited);
+    }
+  }
+
+  dfs(personId, [personId], new Set([personId]));
+  return result;
+}
+
+/**
+ * Compute inbreeding coefficient F for an individual.
+ * F(person) = r(father, mother) / 2
+ * Returns 0 when fewer than 2 parents are known.
+ */
+function computeF(personId, depth = 0) {
+  if (depth > 15) return 0;
+  if (fCache.has(personId)) return fCache.get(personId);
+
+  // Find parents via parent-type edges where person is the child
+  const parentIds = [];
+  for (const idx of (adjIndex.get(personId) || [])) {
+    const edge = edges[idx];
+    if (edge.type !== 'parent') continue;
+    const srcId = typeof edge.source === 'object' ? edge.source.id : edge.source;
+    const tgtId = typeof edge.target === 'object' ? edge.target.id : edge.target;
+    if (tgtId === personId) {
+      parentIds.push(srcId);
+    }
+  }
+
+  if (parentIds.length < 2) {
+    fCache.set(personId, 0);
+    return 0;
+  }
+
+  // Prefer one male + one female parent
+  const father = parentIds.find(p => (nodeById.get(p) || {}).sex === 'male');
+  const mother = parentIds.find(p => (nodeById.get(p) || {}).sex === 'female');
+
+  let r = 0;
+  if (father && mother) {
+    r = computeR(father, mother, depth + 1);
+  } else {
+    r = computeR(parentIds[0], parentIds[1], depth + 1);
+  }
+
+  const f = r / 2;
+  fCache.set(personId, f);
+  return f;
+}
+
+/**
+ * Wright's coefficient of kinship between A and B:
+ *   r(A,B) = Σ [(1/2)^(da+db+1) × (1 + F_ancestor)]
+ * summed over all common ancestors and all path pairs.
+ */
+function computeR(aId, bId, depth = 0) {
+  if (depth > 15) return 0;
+  const cacheKey = aId < bId ? `${aId}|${bId}` : `${bId}|${aId}`;
+  if (rCache.has(cacheKey)) return rCache.get(cacheKey);
+
+  const ancestorsA = findAllAncestorPaths(aId, 15);
+  const ancestorsB = findAllAncestorPaths(bId, 15);
+
+  let totalR = 0;
+
+  for (const [ancestorId, pathsA] of ancestorsA) {
+    const pathsB = ancestorsB.get(ancestorId);
+    if (!pathsB) continue;
+
+    const fAnc = computeF(ancestorId, depth + 1);
+
+    for (const pathA of pathsA) {
+      const da = pathA.length - 1; // steps from A to ancestor
+      for (const pathB of pathsB) {
+        const db = pathB.length - 1; // steps from B to ancestor
+        totalR += Math.pow(0.5, da + db + 1) * (1 + fAnc);
+      }
+    }
+  }
+
+  rCache.set(cacheKey, totalR);
+  return totalR;
+}
+
+/** Convert a node-id path to the corresponding edge-index array. */
+function getEdgeIndicesForPath(nodeIds) {
+  const indices = [];
+  for (let i = 0; i < nodeIds.length - 1; i++) {
+    const from = nodeIds[i];
+    const to = nodeIds[i + 1];
+    const edgeList = adjIndex.get(from) || [];
+    let found = false;
+    for (const idx of edgeList) {
+      const e = edges[idx];
+      const sId = typeof e.source === 'object' ? e.source.id : e.source;
+      const tId = typeof e.target === 'object' ? e.target.id : e.target;
+      if ((sId === from && tId === to) || (sId === to && tId === from)) {
+        indices.push(idx);
+        found = true;
+        break;
+      }
+    }
+  }
+  return indices;
+}
+
+/** Chinese relation-type label based on generational distances. */
+function getRelationType(da, db) {
+  if (da === 1 && db === 1) return '兄妹';
+  if ((da === 1 && db === 2) || (da === 2 && db === 1)) return '叔侄';
+  if ((da === 1 && db >= 3) || (da >= 3 && db === 1)) return '祖孙';
+  if (da === 2 && db === 2) return '堂兄妹';
+  return '远亲';
+}
+
+/** Compute kinship for a single person (F). */
+function computeKinshipSingle(personId) {
+  clearKinshipCaches();
+  const F = computeF(personId);
+  return { type: 'single', personId, F };
+}
+
+/** Compute kinship between two people (r) with common-ancestor details. */
+function computeKinshipDual(aId, bId) {
+  clearKinshipCaches();
+  const r = computeR(aId, bId);
+
+  const ancestorsA = findAllAncestorPaths(aId, 15);
+  const ancestorsB = findAllAncestorPaths(bId, 15);
+
+  const commonAncestors = [];
+
+  for (const [ancestorId, pathsA] of ancestorsA) {
+    const pathsB = ancestorsB.get(ancestorId);
+    if (!pathsB) continue;
+
+    // Pick the shortest path pair for display
+    let bestPathA = pathsA[0];
+    let bestPathB = pathsB[0];
+    let minLen = Infinity;
+    for (const pa of pathsA) {
+      for (const pb of pathsB) {
+        if (pa.length + pb.length < minLen) {
+          minLen = pa.length + pb.length;
+          bestPathA = pa;
+          bestPathB = pb;
+        }
+      }
+    }
+
+    const da = bestPathA.length - 1;
+    const db = bestPathB.length - 1;
+    const relationType = getRelationType(da, db);
+
+    commonAncestors.push({
+      ancestorId,
+      da,
+      db,
+      relationType,
+      pathA: bestPathA,
+      pathB: bestPathB,
+      edgeIndicesA: getEdgeIndicesForPath(bestPathA),
+      edgeIndicesB: getEdgeIndicesForPath(bestPathB),
+    });
+  }
+
+  // Sort closest relations first
+  commonAncestors.sort((a, b) => (a.da + a.db) - (b.da + b.db));
+
+  return { type: 'dual', personA: aId, personB: bId, r, commonAncestors };
+}
+
 function updateHint() {
   const hint = document.getElementById('hint');
   if (pathMode === 'other') {
@@ -605,6 +830,15 @@ function updateHint() {
     } else {
       hint.textContent = '其他路径模式 · 右键清除中间人 · ESC 重置';
     }
+  } else if (pathMode === 'kinship') {
+    if (kinshipPersonA == null) {
+      hint.textContent = '血缘关系查询：点击人物查看近亲系数，或选择两人计算亲缘系数 · ESC 清除';
+    } else if (kinshipPersonB == null) {
+      const a = nodeById.get(kinshipPersonA);
+      hint.textContent = `已选「${displayName(a)}」，点击第二人计算亲缘系数 · ESC 清除`;
+    } else {
+      hint.textContent = '血缘关系查询 · 点击左侧按钮高亮共同祖先路径 · ESC 清除';
+    }
   } else {
     hint.textContent = '点击人物选中，再点另一人查找关系路径 · ESC 清除';
   }
@@ -619,6 +853,64 @@ function onNodeClick(event, d) {
 
   // Hover tooltip lingers – hide it
   hideTooltip();
+
+  // ---- Kinship mode ----
+  if (pathMode === 'kinship') {
+    if (kinshipPersonA == null) {
+      // Step 1: Select first person – compute F
+      kinshipPersonA = d.id;
+      kinshipPersonB = null;
+      highlightedAncestor = null;
+      highlightedPaths = null;
+      kinshipResult = computeKinshipSingle(d.id);
+      updateView();
+      updatePathPanel();
+      updateAncestorPanel();
+      updateHint();
+      openInfoPanel(d);
+    } else if (kinshipPersonB == null) {
+      // Step 2: Select second person – compute r
+      if (d.id === kinshipPersonA) {
+        clearKinshipSelection();
+        updateView();
+        updatePathPanel();
+        updateAncestorPanel();
+        updateHint();
+        closeInfoPanel();
+        return;
+      }
+      kinshipPersonB = d.id;
+      highlightedAncestor = null;
+      highlightedPaths = null;
+      kinshipResult = computeKinshipDual(kinshipPersonA, d.id);
+      updateView();
+      updatePathPanel();
+      updateAncestorPanel();
+      updateHint();
+      openInfoPanel(d);
+    } else {
+      // Deselect second person, pick a new one
+      if (d.id === kinshipPersonA) {
+        clearKinshipSelection();
+        updateView();
+        updatePathPanel();
+        updateAncestorPanel();
+        updateHint();
+        closeInfoPanel();
+        return;
+      }
+      kinshipPersonB = d.id;
+      highlightedAncestor = null;
+      highlightedPaths = null;
+      kinshipResult = computeKinshipDual(kinshipPersonA, d.id);
+      updateView();
+      updatePathPanel();
+      updateAncestorPanel();
+      updateHint();
+      openInfoPanel(d);
+    }
+    return;
+  }
 
   // ---- Other-path mode ----
   if (pathMode === 'other') {
@@ -740,9 +1032,22 @@ function onBackgroundClick() {
     clearSelection();
     return;
   }
+  if (pathMode === 'kinship' && (kinshipPersonA != null || kinshipPersonB != null)) {
+    clearSelection();
+    return;
+  }
   if (selectedNodeId != null) {
     clearSelection();
   }
+}
+
+function clearKinshipSelection() {
+  kinshipPersonA = null;
+  kinshipPersonB = null;
+  kinshipResult = null;
+  highlightedAncestor = null;
+  highlightedPaths = null;
+  clearKinshipCaches();
 }
 
 function clearSelection() {
@@ -752,8 +1057,10 @@ function clearSelection() {
   hlNodes = new Set();
   hlEdges = new Set();
   clearOtherPathSelection();
+  clearKinshipSelection();
   updateView();
   updatePathPanel();
+  updateAncestorPanel();
   closeInfoPanel();
   updateHint();
 }
@@ -763,6 +1070,70 @@ function clearSelection() {
    ============================================================ */
 function updateView() {
   if (!nodeG) return;
+
+  // ---- Kinship mode ----
+  if (pathMode === 'kinship') {
+    const hasA = kinshipPersonA != null;
+    const hasB = kinshipPersonB != null;
+    const hasHighlight = highlightedAncestor != null && highlightedPaths != null;
+
+    if (hasHighlight) {
+      const hpNodes = highlightedPaths.nodeIds;
+      const ancestorId = highlightedAncestor;
+
+      nodeG.selectAll('circle')
+        .attr('opacity', n => {
+          if (!isNodeVisible(n.id)) return 0.03;
+          if (n.id === kinshipPersonA || n.id === kinshipPersonB) return 1;
+          if (hpNodes.has(n.id)) return 1;
+          return 0.10;
+        })
+        .attr('fill', n => {
+          if (n.id === kinshipPersonA || n.id === kinshipPersonB) return '#D4AF37';
+          if (n.id === ancestorId) return '#A855F7';
+          return (NODE_STYLE[n.role] || NODE_STYLE.relative).color;
+        });
+
+      updateLabelPositionsWithSet(hpNodes);
+    } else if (hasB && kinshipResult && kinshipResult.type === 'dual') {
+      // Dual selected with result, no ancestor highlight active
+      nodeG.selectAll('circle')
+        .attr('opacity', n => {
+          if (!isNodeVisible(n.id)) return 0.03;
+          if (n.id === kinshipPersonA || n.id === kinshipPersonB) return 1;
+          return 0.35;
+        })
+        .attr('fill', n => {
+          if (n.id === kinshipPersonA || n.id === kinshipPersonB) return '#D4AF37';
+          return (NODE_STYLE[n.role] || NODE_STYLE.relative).color;
+        });
+
+      updateLabelPositionsWithSet(new Set([kinshipPersonA, kinshipPersonB]));
+    } else if (hasA) {
+      // Single selected
+      nodeG.selectAll('circle')
+        .attr('opacity', n => {
+          if (!isNodeVisible(n.id)) return 0.03;
+          if (n.id === kinshipPersonA) return 1;
+          return 0.08;
+        })
+        .attr('fill', n => {
+          if (n.id === kinshipPersonA) return '#D4AF37';
+          return (NODE_STYLE[n.role] || NODE_STYLE.relative).color;
+        });
+
+      updateLabelPositionsWithSet(new Set([kinshipPersonA]));
+    } else {
+      // Nothing selected
+      nodeG.selectAll('circle')
+        .attr('opacity', n => isNodeVisible(n.id) ? 1 : 0.03)
+        .attr('fill', n => (NODE_STYLE[n.role] || NODE_STYLE.relative).color);
+      updateLabelPositionsWithSet(new Set());
+    }
+
+    drawEdges(currentTransform);
+    return;
+  }
 
   // ---- Other-path mode ----
   if (pathMode === 'other') {
@@ -864,6 +1235,66 @@ function drawEdges(t) {
   const isHovering = hlEdges.size > 0 && !hasSelection && !hasPath;
 
   const pathEdgeSet = hasPath ? new Set(pathResult.edgeIndices) : new Set();
+
+  // ---- Kinship mode ----
+  if (pathMode === 'kinship') {
+    const hasHighlight = highlightedAncestor != null && highlightedPaths != null;
+    const hasA = kinshipPersonA != null;
+    const hasB = kinshipPersonB != null;
+
+    let hlEdgeSet = new Set();
+    if (hasHighlight) {
+      hlEdgeSet = highlightedPaths.edgeIndices;
+    } else if (hasB) {
+      (adjIndex.get(kinshipPersonA) || []).forEach(idx => hlEdgeSet.add(idx));
+      (adjIndex.get(kinshipPersonB) || []).forEach(idx => hlEdgeSet.add(idx));
+    } else if (hasA) {
+      (adjIndex.get(kinshipPersonA) || []).forEach(idx => hlEdgeSet.add(idx));
+    }
+
+    ['parent', 'spouse'].forEach(type => {
+      const color = EDGE_STYLE[type].color;
+
+      // Pass 1: highlighted edges (purple for ancestor paths)
+      if (hasHighlight) {
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = '#A855F7';
+      } else {
+        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = color + 'cc';
+      }
+      ctx.beginPath();
+      let hlCount = 0;
+      edges.forEach((e, i) => {
+        if (e.type !== type) return;
+        const src = e.source, tgt = e.target;
+        if (!src || src.x == null || !tgt || tgt.x == null) return;
+        if (!hlEdgeSet.has(i)) return;
+        ctx.moveTo(src.x, src.y);
+        ctx.lineTo(tgt.x, tgt.y);
+        hlCount++;
+      });
+      if (hlCount) ctx.stroke();
+
+      // Pass 2: dimmed background edges
+      const dim = hasA;
+      ctx.lineWidth = dim ? 0.3 : 0.5;
+      ctx.strokeStyle = dim ? (color + '08') : (color + '55');
+      ctx.beginPath();
+      let dimCount = 0;
+      edges.forEach((e, i) => {
+        if (e.type !== type) return;
+        const src = e.source, tgt = e.target;
+        if (!src || src.x == null || !tgt || tgt.x == null) return;
+        if (hlEdgeSet.has(i)) return;
+        ctx.moveTo(src.x, src.y);
+        ctx.lineTo(tgt.x, tgt.y);
+        dimCount++;
+      });
+      if (dimCount) ctx.stroke();
+    });
+    return;
+  }
 
   // ---- Other-path mode ----
   if (pathMode === 'other') {
@@ -1008,6 +1439,7 @@ function onHover(event, d) {
   // Suppress hover when a selection is active (either mode)
   if (selectedNodeId != null) return;
   if (pathMode === 'other' && (otherPathA != null || otherPathB != null)) return;
+  if (pathMode === 'kinship' && kinshipPersonA != null) return;
   if (!isNodeVisible(d.id)) return;
   if (hoveredId === d.id) return;
 
@@ -1038,6 +1470,7 @@ function onHover(event, d) {
 function offHover() {
   if (selectedNodeId != null) return;
   if (pathMode === 'other' && (otherPathA != null || otherPathB != null)) return;
+  if (pathMode === 'kinship' && kinshipPersonA != null) return;
   hoveredId = null;
   hlNodes = new Set();
   hlEdges = new Set();
@@ -1146,6 +1579,43 @@ function closeInfoPanel() {
 function updatePathPanel(srcIdOverride, tgtIdOverride, noPath, otherCId) {
   const panel = document.getElementById('path-panel');
   const content = document.getElementById('path-content');
+
+  // ---- Kinship mode ----
+  if (pathMode === 'kinship') {
+    if (kinshipPersonA == null) {
+      panel.classList.remove('visible');
+      return;
+    }
+    panel.classList.add('visible');
+
+    const aNode = nodeById.get(kinshipPersonA);
+    const aName = escHtml(displayName(aNode));
+
+    if (!kinshipPersonB) {
+      // Single mode: show F
+      const F = kinshipResult ? kinshipResult.F : 0;
+      let html = `<div class="path-first">已选: <strong>${aName}</strong></div>`;
+      if (F > 0) {
+        html += `<div class="path-kinship">近亲系数 F = ${F.toFixed(4)}</div>`;
+      } else {
+        html += `<div class="path-kinship-zero">无近亲通婚记录</div>`;
+      }
+      html += `<div class="path-kinship-warning">受数据完整性限制，实际系数可能更高</div>`;
+      content.innerHTML = html;
+      return;
+    }
+
+    // Dual mode: show r
+    const bNode = nodeById.get(kinshipPersonB);
+    const bName = escHtml(displayName(bNode));
+    const r = kinshipResult && kinshipResult.type === 'dual' ? kinshipResult.r : 0;
+
+    let html = `<div class="path-title">${aName} ↔ ${bName}</div>`;
+    html += `<div class="path-kinship">亲缘系数 r = ${r.toFixed(4)}</div>`;
+    html += `<div class="path-kinship-warning">受数据完整性限制，实际系数可能更高</div>`;
+    content.innerHTML = html;
+    return;
+  }
 
   // ---- Other-path mode ----
   if (pathMode === 'other') {
@@ -1267,6 +1737,70 @@ function updatePathPanel(srcIdOverride, tgtIdOverride, noPath, otherCId) {
 }
 
 /* ============================================================
+   Kinship ancestor button panel
+   ============================================================ */
+function updateAncestorPanel() {
+  const panel = document.getElementById('kinship-ancestors-panel');
+  const list = document.getElementById('kinship-ancestors-list');
+
+  // Only show in kinship dual mode with results
+  if (pathMode !== 'kinship' || !kinshipPersonB || !kinshipResult || kinshipResult.type !== 'dual') {
+    panel.classList.remove('visible');
+    return;
+  }
+
+  const ancestors = kinshipResult.commonAncestors || [];
+
+  if (ancestors.length === 0) {
+    list.innerHTML = '<div style="color:rgba(143,168,200,0.4);font-size:11px;text-align:center;padding:8px">未找到共同祖先</div>';
+  } else {
+    list.innerHTML = ancestors.map(ca => {
+      const ancNode = nodeById.get(ca.ancestorId);
+      const ancName = ancNode ? displayName(ancNode) : ca.ancestorId;
+      const activeClass = highlightedAncestor === ca.ancestorId ? ' active' : '';
+      return `<button class="ka-btn${activeClass}" data-ancestor="${ca.ancestorId}">${ca.relationType}（via ${escHtml(ancName)}）</button>`;
+    }).join('');
+  }
+
+  // Close button
+  list.innerHTML += '<button class="ka-close">✕ 清除高亮</button>';
+
+  panel.classList.add('visible');
+
+  // Attach event listeners
+  list.querySelectorAll('.ka-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const ancestorId = btn.dataset.ancestor;
+      if (highlightedAncestor === ancestorId) {
+        // Deselect
+        highlightedAncestor = null;
+        highlightedPaths = null;
+      } else {
+        // Select this ancestor
+        highlightedAncestor = ancestorId;
+        const ca = ancestors.find(a => a.ancestorId === ancestorId);
+        if (ca) {
+          const allNodeIds = new Set([...ca.pathA, ...ca.pathB]);
+          const allEdgeIndices = new Set([...ca.edgeIndicesA, ...ca.edgeIndicesB]);
+          highlightedPaths = { nodeIds: allNodeIds, edgeIndices: allEdgeIndices };
+        }
+      }
+      updateView();
+      updateAncestorPanel();
+    });
+  });
+
+  list.querySelector('.ka-close').addEventListener('click', (e) => {
+    e.stopPropagation();
+    highlightedAncestor = null;
+    highlightedPaths = null;
+    updateView();
+    updateAncestorPanel();
+  });
+}
+
+/* ============================================================
    Search
    ============================================================ */
 function initSearch() {
@@ -1372,13 +1906,22 @@ function initModeToggle() {
     if (pathMode === 'shortest') return;
     d3.select('#mode-shortest').classed('active', true);
     d3.select('#mode-other').classed('active', false);
+    d3.select('#mode-kinship').classed('active', false);
     setPathMode('shortest');
   });
   d3.select('#mode-other').on('click', () => {
     if (pathMode === 'other') return;
     d3.select('#mode-shortest').classed('active', false);
     d3.select('#mode-other').classed('active', true);
+    d3.select('#mode-kinship').classed('active', false);
     setPathMode('other');
+  });
+  d3.select('#mode-kinship').on('click', () => {
+    if (pathMode === 'kinship') return;
+    d3.select('#mode-shortest').classed('active', false);
+    d3.select('#mode-other').classed('active', false);
+    d3.select('#mode-kinship').classed('active', true);
+    setPathMode('kinship');
   });
 }
 
@@ -1476,6 +2019,11 @@ function initKeyboard() {
       }
       // Clear other-path selection first
       if (pathMode === 'other' && (otherPathA != null || otherPathB != null || otherPathC != null)) {
+        clearSelection();
+        return;
+      }
+      // Clear kinship selection
+      if (pathMode === 'kinship' && (kinshipPersonA != null || kinshipPersonB != null)) {
         clearSelection();
         return;
       }
