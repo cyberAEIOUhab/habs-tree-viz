@@ -490,7 +490,7 @@
     "died": 1964,
     "dynasty": "House of Habsburg",
     "title": "Archduchess of Austria, Princess Royal of Hungary and Bohemia",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "female",
     "name_zh": "巴伐利亚的奥古斯特公主"
   },
@@ -2426,7 +2426,7 @@
     "died": 1929,
     "dynasty": "House of Habsburg",
     "title": "Duchess Marie of Mecklenburg-Schwerin",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "female",
     "name_zh": "玛丽公主"
   },
@@ -2448,7 +2448,7 @@
     "died": 1976,
     "dynasty": "House of Habsburg",
     "title": "Princess Edouard Josef de Lobkowicz",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "female",
     "name_zh": "安妮塔·利姆"
   },
@@ -2481,7 +2481,7 @@
     "died": 1921,
     "dynasty": "House of Habsburg",
     "title": "Princess of Metternich-Winneburg zu Beilstein",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "female",
     "name_zh": "保利娜"
   },
@@ -2899,7 +2899,7 @@
     "died": null,
     "dynasty": "House of Habsburg",
     "title": "Princess Edouard de Lobkowicz",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "female",
     "name_zh": "波旁-帕尔马的玛丽·弗朗索瓦丝"
   },
@@ -3691,7 +3691,7 @@
     "died": 1892,
     "dynasty": "",
     "title": "",
-    "role": "relative",
+    "role": "consort",
     "sex": "male",
     "name_zh": "弗朗茨亲王"
   },
@@ -3867,7 +3867,7 @@
     "died": null,
     "dynasty": "",
     "title": "",
-    "role": "relative",
+    "role": "consort",
     "sex": "male",
     "name_zh": "马里亚诺·胡戈"
   },
@@ -4439,7 +4439,7 @@
     "died": 1305,
     "dynasty": "",
     "title": "",
-    "role": "relative",
+    "role": "consort",
     "sex": "male",
     "name_zh": "文策斯劳斯二世"
   },
@@ -4461,7 +4461,7 @@
     "died": 1557,
     "dynasty": "",
     "title": "",
-    "role": "relative",
+    "role": "consort",
     "sex": "male",
     "name_zh": "约翰三世"
   },
@@ -4637,7 +4637,7 @@
     "died": 1626,
     "dynasty": "",
     "title": "",
-    "role": "habsburg",
+    "role": "relative",
     "sex": "female",
     "name_zh": "萨伏依的伊莎贝拉"
   },
@@ -4648,7 +4648,7 @@
     "died": 1532,
     "dynasty": "",
     "title": "",
-    "role": "habsburg",
+    "role": "relative",
     "sex": "male",
     "name_zh": "丹麦的约翰"
   },
@@ -4868,7 +4868,7 @@
     "died": 1344,
     "dynasty": "",
     "title": "",
-    "role": "habsburg",
+    "role": "relative",
     "sex": "male",
     "name_zh": "利奥波德二世"
   },
@@ -4945,7 +4945,7 @@
     "died": 1833,
     "dynasty": "",
     "title": "",
-    "role": "relative",
+    "role": "consort",
     "sex": "male",
     "name_zh": "尼古劳斯二世"
   },
@@ -5330,7 +5330,7 @@
     "died": 1379,
     "dynasty": "",
     "title": "",
-    "role": "relative",
+    "role": "consort",
     "sex": "male",
     "name_zh": "奥托五世"
   },
@@ -6133,7 +6133,7 @@
     "died": 1895,
     "dynasty": "",
     "title": "",
-    "role": "relative",
+    "role": "consort",
     "sex": "male",
     "name_zh": "里夏德·克莱门斯·约瑟夫·洛塔尔·赫尔曼"
   },
@@ -6628,7 +6628,7 @@
     "died": 1939,
     "dynasty": "",
     "title": "",
-    "role": "relative",
+    "role": "consort",
     "sex": "male",
     "name_zh": "阿尔布雷希特"
   },
@@ -6815,7 +6815,7 @@
     "died": null,
     "dynasty": "",
     "title": "",
-    "role": "consort",
+    "role": "relative",
     "sex": "female",
     "name_zh": "菲奥娜·坎贝尔-沃尔特"
   },
@@ -6848,7 +6848,7 @@
     "died": 1926,
     "dynasty": "",
     "title": "",
-    "role": "relative",
+    "role": "consort",
     "sex": "male",
     "name_zh": "恩里科·托塞利"
   },
@@ -7838,7 +7838,7 @@
     "died": 1976,
     "dynasty": "",
     "title": "",
-    "role": "habsburg",
+    "role": "relative",
     "sex": "female",
     "name_zh": "萨克森的安娜公主"
   },
@@ -8058,7 +8058,7 @@
     "died": null,
     "dynasty": "",
     "title": "",
-    "role": "consort",
+    "role": "relative",
     "sex": "female",
     "name_zh": "萨伏依的凯瑟琳"
   },
@@ -8333,7 +8333,7 @@
     "died": 1867,
     "dynasty": "House of Thurn and Taxis",
     "title": "Hereditary Prince of Thurn and Taxis",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "male",
     "name_zh": "马克西米利安·安东"
   },
@@ -8421,7 +8421,7 @@
     "died": 1539,
     "dynasty": "House of Wettin",
     "title": "Duke of Saxony",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "male",
     "name_zh": "萨克森公爵乔治"
   },
@@ -8443,7 +8443,7 @@
     "died": 1797,
     "dynasty": "House of Lorraine",
     "title": "Princess of Carignano",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "female",
     "name_zh": "洛林的约瑟芬"
   },
@@ -8465,7 +8465,7 @@
     "died": 1346,
     "dynasty": "House of Luxembourg",
     "title": "King of Bohemia",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "male",
     "name_zh": "波希米亚的约翰"
   },
@@ -8487,7 +8487,7 @@
     "died": 1393,
     "dynasty": "House of Griffin",
     "title": "Holy Roman Empress",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "female",
     "name_zh": "波美拉尼亚的伊丽莎白"
   },
@@ -8498,7 +8498,7 @@
     "died": 1419,
     "dynasty": "House of Luxembourg",
     "title": "King of Bohemia",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "male",
     "name_zh": "瓦茨拉夫四世"
   },
@@ -8542,7 +8542,7 @@
     "died": 1670,
     "dynasty": "House of Lorraine",
     "title": "Duke of Lorraine",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "male",
     "name_zh": "洛林公爵尼古拉·弗朗索瓦"
   },
@@ -8553,7 +8553,7 @@
     "died": 1648,
     "dynasty": "House of Lorraine",
     "title": "Duchess of Lorraine",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "female",
     "name_zh": "洛林的克洛德·弗朗索瓦丝"
   },
@@ -8586,7 +8586,7 @@
     "died": 1575,
     "dynasty": "House of Valois",
     "title": "Duchess of Lorraine",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "female",
     "name_zh": "法国的克洛德"
   },
@@ -8696,7 +8696,7 @@
     "died": 1433,
     "dynasty": "House of Aviz",
     "title": "King of Portugal",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "male",
     "name_zh": "若昂一世"
   },
@@ -8773,7 +8773,7 @@
     "died": 1267,
     "dynasty": "House of Welf",
     "title": "Duchess consort of Bavaria",
-    "role": "relative",
+    "role": "spouse",
     "sex": "female",
     "name_zh": "普法尔茨的阿格尼丝"
   },
@@ -8806,7 +8806,7 @@
     "died": 1589,
     "dynasty": "House of Medici",
     "title": "Queen consort of France",
-    "role": "relative",
+    "role": "spouse",
     "sex": "female",
     "name_zh": "凯瑟琳·德·美第奇"
   },
@@ -8839,7 +8839,7 @@
     "died": 1761,
     "dynasty": "House of Orléans",
     "title": "Duchess consort of Modena",
-    "role": "relative",
+    "role": "spouse",
     "sex": "female",
     "name_zh": "奥尔良的夏洛特·阿格莱丝"
   },
@@ -8916,7 +8916,7 @@
     "died": 1873,
     "dynasty": "House of Wettin",
     "title": "King of Saxony",
-    "role": "relative",
+    "role": "spouse",
     "sex": "male",
     "name_zh": "萨克森国王约翰"
   },
@@ -9169,7 +9169,7 @@
     "died": 1731,
     "dynasty": "Cybo-Malaspina",
     "title": "Duke of Massa and Carrara",
-    "role": "relative",
+    "role": "spouse",
     "sex": "male",
     "name_zh": "阿德尔贝托一世·奇博-马拉斯皮纳"
   },
@@ -9180,7 +9180,7 @@
     "died": 1768,
     "dynasty": "House of Gonzaga",
     "title": "Duchess of Massa and Carrara",
-    "role": "relative",
+    "role": "spouse",
     "sex": "female",
     "name_zh": "里卡达·贡扎加"
   },
@@ -9235,7 +9235,7 @@
     "died": 1730,
     "dynasty": "House of Sobieski",
     "title": "Electress of Bavaria",
-    "role": "relative",
+    "role": "spouse",
     "sex": "female",
     "name_zh": "特蕾莎·库内贡德·索别斯卡"
   },
@@ -9246,7 +9246,7 @@
     "died": 1767,
     "dynasty": "House of Wittelsbach",
     "title": "Count Palatine of Zweibrücken",
-    "role": "relative",
+    "role": "spouse",
     "sex": "male",
     "name_zh": "弗里德里希·米夏埃尔"
   },
@@ -9257,7 +9257,7 @@
     "died": 1796,
     "dynasty": "House of Hesse-Darmstadt",
     "title": "Duchess of Zweibrücken",
-    "role": "relative",
+    "role": "spouse",
     "sex": "female",
     "name_zh": "奥古斯特·威廉明妮"
   },
@@ -9290,7 +9290,7 @@
     "died": 1826,
     "dynasty": "House of Braganza",
     "title": "King of Portugal",
-    "role": "relative",
+    "role": "spouse",
     "sex": "male",
     "name_zh": "若昂六世"
   },
@@ -9301,7 +9301,7 @@
     "died": 1628,
     "dynasty": "House of Wittelsbach",
     "title": "Countess Palatine of Neuburg",
-    "role": "relative",
+    "role": "spouse",
     "sex": "female",
     "name_zh": "巴伐利亚的玛格达莱妮"
   },
@@ -9334,7 +9334,7 @@
     "died": 1940,
     "dynasty": "House of Orléans",
     "title": "Duke of Guise",
-    "role": "relative",
+    "role": "parent",
     "sex": "male",
     "name_zh": "吉斯公爵让亲王"
   },
@@ -9356,7 +9356,7 @@
     "died": 1925,
     "dynasty": "House of Wittelsbach",
     "title": "Queen consort of the Two Sicilies",
-    "role": "relative",
+    "role": "child",
     "sex": "female",
     "name_zh": "巴伐利亚的玛丽亚·索菲，两西西里王后"
   },
@@ -9389,7 +9389,7 @@
     "died": 1390,
     "dynasty": "House of Lorraine",
     "title": "Duke of Lorraine",
-    "role": "relative",
+    "role": "child",
     "sex": "male",
     "name_zh": "洛林公爵约翰一世"
   },
@@ -9400,7 +9400,7 @@
     "died": 1581,
     "dynasty": "House of Báthory",
     "title": "Prince of Transylvania",
-    "role": "relative",
+    "role": "parent",
     "sex": "male",
     "name_zh": "克里斯托弗·巴托里"
   },
@@ -9411,7 +9411,7 @@
     "died": 1557,
     "dynasty": "House of Sforza",
     "title": "Queen consort of Poland",
-    "role": "relative",
+    "role": "parent",
     "sex": "female",
     "name_zh": "博娜·斯福尔扎"
   },
@@ -9433,7 +9433,7 @@
     "died": 1551,
     "dynasty": "House of Radziwiłł",
     "title": "Queen consort of Poland",
-    "role": "relative",
+    "role": "spouse",
     "sex": "female",
     "name_zh": "芭芭拉·拉齐维乌"
   },
@@ -9455,7 +9455,7 @@
     "died": 1536,
     "dynasty": "House of Hohenzollern",
     "title": "Margrave of Brandenburg-Ansbach",
-    "role": "relative",
+    "role": "spouse",
     "sex": "male",
     "name_zh": "勃兰登堡-安斯巴赫藩侯弗里德里希一世"
   },
@@ -9466,7 +9466,7 @@
     "died": 1527,
     "dynasty": "House of Hohenzollern",
     "title": "Margrave of Brandenburg-Bayreuth",
-    "role": "relative",
+    "role": "spouse",
     "sex": "male",
     "name_zh": "勃兰登堡-拜罗伊特藩侯卡西米尔"
   },
@@ -9488,7 +9488,7 @@
     "died": 1663,
     "dynasty": "House of Bourbon",
     "title": "Duchess of Savoy",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "female",
     "name_zh": "法国的克里斯蒂娜"
   },
@@ -9521,7 +9521,7 @@
     "died": 1428,
     "dynasty": "House of Wettin",
     "title": "Elector of Saxony",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "male",
     "name_zh": "萨克森选侯弗里德里希一世"
   },
@@ -9565,7 +9565,7 @@
     "died": 1356,
     "dynasty": "House of Avesnes",
     "title": "Countess of Hainaut, Holland and Zeeland",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "female",
     "name_zh": "埃诺女伯爵玛格丽特二世"
   },
@@ -9576,7 +9576,7 @@
     "died": 1386,
     "dynasty": "Piast dynasty",
     "title": "Duchess of Bavaria",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "female",
     "name_zh": "布热格的玛格丽特"
   },
@@ -9587,7 +9587,7 @@
     "died": 1417,
     "dynasty": "House of Wittelsbach",
     "title": "Duke of Bavaria-Straubing",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "male",
     "name_zh": "巴伐利亚公爵威廉二世"
   },
@@ -9697,7 +9697,7 @@
     "died": 1285,
     "dynasty": "House of Capet",
     "title": "King of France",
-    "role": "relative",
+    "role": "spouse",
     "sex": "male",
     "name_zh": "腓力三世，法兰西国王"
   },
@@ -9708,7 +9708,7 @@
     "died": 1321,
     "dynasty": "House of Reginar",
     "title": "Queen of France",
-    "role": "relative",
+    "role": "spouse",
     "sex": "female",
     "name_zh": "布拉班特的玛丽，法兰西王后"
   },
@@ -9785,7 +9785,7 @@
     "died": 1637,
     "dynasty": "House of Gonzaga",
     "title": "Duke of Mantua and Montferrat",
-    "role": "relative",
+    "role": "spouse",
     "sex": "male",
     "name_zh": "卡洛一世·贡扎加，曼托瓦公爵"
   },
@@ -9807,7 +9807,7 @@
     "died": 1728,
     "dynasty": "House of La Tour d'Auvergne",
     "title": "Margravine of Bergen op Zoom",
-    "role": "relative",
+    "role": "spouse",
     "sex": "female",
     "name_zh": "玛丽亚·亨丽埃特·德·拉图尔·多韦涅"
   },
@@ -9818,7 +9818,7 @@
     "died": 1794,
     "dynasty": "House of Wittelsbach",
     "title": "Electress of Bavaria",
-    "role": "relative",
+    "role": "spouse",
     "sex": "female",
     "name_zh": "普法尔茨-苏尔茨巴赫的伊丽莎白·奥古斯特女伯爵"
   },
@@ -9873,7 +9873,7 @@
     "died": 1316,
     "dynasty": "House of Capet",
     "title": "King of France",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "male",
     "name_zh": "法国国王路易十世"
   },
@@ -9895,7 +9895,7 @@
     "died": 1556,
     "dynasty": "House of Wittelsbach",
     "title": "Elector Palatine",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "male",
     "name_zh": "普法尔茨选帝侯弗里德里希二世"
   },
@@ -9906,7 +9906,7 @@
     "died": 1904,
     "dynasty": "House of Windisch-Graetz",
     "title": "Prince of Windisch-Graetz",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "male",
     "name_zh": "温迪施-格雷茨亲王胡戈"
   },
@@ -9917,7 +9917,7 @@
     "died": 1761,
     "dynasty": "House of Zähringen",
     "title": "Margrave of Baden-Baden",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "male",
     "name_zh": "巴登-巴登藩侯路德维希·格奥尔格"
   },
@@ -10005,7 +10005,7 @@
     "died": 1737,
     "dynasty": "House of Württemberg",
     "title": "Duke of Württemberg",
-    "role": "relative",
+    "role": "non_habsburg",
     "sex": "male",
     "name_zh": "卡尔·亚历山大"
   },
@@ -10016,7 +10016,7 @@
     "died": 1756,
     "dynasty": "Thurn and Taxis",
     "title": "Duchess of Württemberg",
-    "role": "relative",
+    "role": "non_habsburg",
     "sex": "female",
     "name_zh": "玛丽亚·奥古斯塔·冯·图恩-塔克西斯"
   },
@@ -10038,7 +10038,7 @@
     "died": 1787,
     "dynasty": "House of Orange-Nassau",
     "title": "Princess of Nassau-Weilburg",
-    "role": "relative",
+    "role": "non_habsburg",
     "sex": "female",
     "name_zh": "奥兰治-拿骚的卡洛琳公主"
   },
@@ -10049,7 +10049,7 @@
     "died": 1468,
     "dynasty": "Visconti",
     "title": "Duchess of Milan",
-    "role": "relative",
+    "role": "non_habsburg",
     "sex": "female",
     "name_zh": "比安卡·玛丽亚·维斯孔蒂"
   },
@@ -10060,7 +10060,7 @@
     "died": 1884,
     "dynasty": "House of Braganza",
     "title": "Infanta of Portugal",
-    "role": "relative",
+    "role": "non_habsburg",
     "sex": "female",
     "name_zh": "葡萄牙的玛丽亚·安娜公主"
   },
@@ -10071,7 +10071,7 @@
     "died": 1503,
     "dynasty": "House of Wittelsbach",
     "title": "Duke of Bavaria-Landshut",
-    "role": "relative",
+    "role": "non_habsburg",
     "sex": "male",
     "name_zh": "格奥尔格"
   },
@@ -10082,7 +10082,7 @@
     "died": 1820,
     "dynasty": "House of Bourbon",
     "title": "Duke of Berry",
-    "role": "relative",
+    "role": "non_habsburg",
     "sex": "male",
     "name_zh": "夏尔·斐迪南"
   },
@@ -10093,7 +10093,7 @@
     "died": 1649,
     "dynasty": "House of Stuart",
     "title": "King of England",
-    "role": "relative",
+    "role": "non_habsburg",
     "sex": "male",
     "name_zh": "查理一世"
   },
@@ -10104,7 +10104,7 @@
     "died": 1669,
     "dynasty": "House of Bourbon",
     "title": "Queen of England",
-    "role": "relative",
+    "role": "non_habsburg",
     "sex": "female",
     "name_zh": "亨利埃塔·玛丽亚"
   },
@@ -10159,7 +10159,7 @@
     "died": 1905,
     "dynasty": "House of Saxe-Coburg and Gotha",
     "title": "Count of Flanders",
-    "role": "relative",
+    "role": "non_habsburg",
     "sex": "male",
     "name_zh": "佛兰德伯爵菲利普亲王"
   },
@@ -10313,7 +10313,7 @@
     "died": 1676,
     "dynasty": "House of Savoy",
     "title": "Electress of Bavaria",
-    "role": "relative",
+    "role": "parent",
     "sex": "female",
     "name_zh": "萨伏依的亨丽埃特·阿德莱德"
   },
@@ -10324,7 +10324,7 @@
     "died": 1794,
     "dynasty": "House of Wittelsbach",
     "title": "Countess Palatine of Zweibrücken-Birkenfeld",
-    "role": "relative",
+    "role": "parent",
     "sex": "female",
     "name_zh": "苏尔茨巴赫的玛丽亚·弗兰齐斯卡"
   },
@@ -10357,7 +10357,7 @@
     "died": 1766,
     "dynasty": "House of Farnese",
     "title": "Queen consort of Spain",
-    "role": "relative",
+    "role": "parent",
     "sex": "female",
     "name_zh": "埃丽莎贝塔·法尔内塞"
   },
@@ -10456,7 +10456,7 @@
     "died": 1919,
     "dynasty": "House of Orléans",
     "title": "Countess of Paris",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "female",
     "name_zh": "奥尔良的玛丽·伊莎贝尔"
   },
@@ -10478,7 +10478,7 @@
     "died": 1850,
     "dynasty": "House of Orléans",
     "title": "King of the French",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "male",
     "name_zh": "路易-菲利普一世"
   },
@@ -10489,7 +10489,7 @@
     "died": 1771,
     "dynasty": "House of Hohenzollern",
     "title": "Margrave of Brandenburg-Schwedt",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "male",
     "name_zh": "腓特烈·威廉（勃兰登堡-施韦特藩侯）"
   },
@@ -10500,7 +10500,7 @@
     "died": 1927,
     "dynasty": "House of Hohenzollern-Sigmaringen",
     "title": "King of Romania",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "male",
     "name_zh": "斐迪南一世（罗马尼亚国王）"
   },
@@ -10511,7 +10511,7 @@
     "died": 1938,
     "dynasty": "House of Saxe-Coburg and Gotha",
     "title": "Queen consort of Romania",
-    "role": "relative",
+    "role": "habsburg",
     "sex": "female",
     "name_zh": "爱丁堡的玛丽公主"
   },
@@ -10533,7 +10533,7 @@
     "died": 1896,
     "dynasty": "House of Orléans",
     "title": "Count of Aquila",
-    "role": "relative",
+    "role": "spouse",
     "sex": "male",
     "name_zh": "阿基坦伯爵路易"
   },
@@ -10544,7 +10544,7 @@
     "died": 1921,
     "dynasty": "House of Saxe-Coburg and Gotha",
     "title": "Prince of Saxe-Coburg and Gotha",
-    "role": "consort",
+    "role": "spouse",
     "sex": "male",
     "name_zh": "萨克森-科堡-哥达的菲利普亲王"
   },
@@ -10555,7 +10555,7 @@
     "died": 1550,
     "dynasty": "House of Württemberg",
     "title": "Duke of Württemberg",
-    "role": "consort",
+    "role": "spouse",
     "sex": "male",
     "name_zh": "符腾堡公爵乌尔里希"
   },
@@ -10610,7 +10610,7 @@
     "died": 1709,
     "dynasty": "House of Savoy",
     "title": "Prince of Carignano",
-    "role": "relative",
+    "role": "child",
     "sex": "male",
     "name_zh": "卡里尼亚诺亲王埃马努埃莱·菲利贝托"
   },
@@ -10621,7 +10621,7 @@
     "died": 1675,
     "dynasty": "House of Savoy",
     "title": "Duke of Savoy",
-    "role": "relative",
+    "role": "child",
     "sex": "male",
     "name_zh": "萨伏依公爵卡洛·埃马努埃莱二世"
   },
@@ -10632,7 +10632,7 @@
     "died": 1796,
     "dynasty": "House of Savoy",
     "title": "King of Sardinia",
-    "role": "relative",
+    "role": "parent",
     "sex": "male",
     "name_zh": "撒丁国王维托里奥·阿梅迪奥三世"
   },
@@ -10643,7 +10643,7 @@
     "died": 1785,
     "dynasty": "House of Bourbon",
     "title": "Queen of Sardinia",
-    "role": "relative",
+    "role": "parent",
     "sex": "female",
     "name_zh": "西班牙的玛丽亚·安东尼娅·费迪南达"
   },
@@ -10665,7 +10665,7 @@
     "died": 1806,
     "dynasty": "House of Ascania",
     "title": "Prince of Anhalt-Bernburg-Schaumburg-Hoym",
-    "role": "relative",
+    "role": "parent",
     "sex": "male",
     "name_zh": "安哈尔特-贝恩堡-绍姆堡-霍伊姆亲王卡尔·路德维希"
   },
