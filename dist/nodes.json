@@ -1254,17 +1254,6 @@
     "name_zh": "奥地利的芭芭拉"
   },
   {
-    "id": "Catherine_of_Austria,_Queen_of_Portugal",
-    "name": "Catherine of Austria",
-    "born": 1507,
-    "died": 1578,
-    "dynasty": "House of Habsburg",
-    "title": "",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "奥地利的凯瑟琳"
-  },
-  {
     "id": "Eleanor_of_Portugal,_Holy_Roman_Empress",
     "name": "Eleanor of Portugal",
     "born": 1434,
@@ -2946,17 +2935,6 @@
     "role": "habsburg",
     "sex": "female",
     "name_zh": "奥地利的伊丽莎白"
-  },
-  {
-    "id": "Elisabeth_of_Carinthia,_Queen_of_Germany",
-    "name": "Elisabeth of Carinthia",
-    "born": 1262,
-    "died": 1312,
-    "dynasty": "House of Habsburg",
-    "title": "",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "克恩滕的伊丽莎白"
   },
   {
     "id": "Catherine_of_Austria,_Duchess_of_Calabria",
@@ -7612,17 +7590,6 @@
     "name_zh": "安东尼"
   },
   {
-    "id": "William,_Duke_of_Jülich-Cleves-Berg",
-    "name": "William the Rich",
-    "born": 1516,
-    "died": 1592,
-    "dynasty": "",
-    "title": "",
-    "role": "consort",
-    "sex": "male",
-    "name_zh": "富有者威廉"
-  },
-  {
     "id": "Albert_II_of_Belgium",
     "name": "Albert II",
     "born": 1934,
@@ -8349,17 +8316,6 @@
     "name_zh": "克恩滕的伊丽莎白"
   },
   {
-    "id": "Johanna_of_Pfirt",
-    "name": "Johanna of Pfirt",
-    "born": 1300,
-    "died": 1351,
-    "dynasty": "House of Scarponnois",
-    "title": "Duchess of Austria",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "普菲尔特的乔安娜"
-  },
-  {
     "id": "Beatrix_of_Nuremberg",
     "name": "Beatrix of Nuremberg",
     "born": 1362,
@@ -8404,17 +8360,6 @@
     "name_zh": "利奥波德二世"
   },
   {
-    "id": "Sophie_Duchess_of_Hohenberg",
-    "name": "Sophie",
-    "born": 1868,
-    "died": 1914,
-    "dynasty": "House of Chotek",
-    "title": "Duchess of Hohenberg",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "索菲"
-  },
-  {
     "id": "Maximilian_Duke_of_Hohenberg",
     "name": "Maximilian",
     "born": 1902,
@@ -8424,17 +8369,6 @@
     "role": "habsburg",
     "sex": "male",
     "name_zh": "马克西米利安"
-  },
-  {
-    "id": "Blanca_of_Spain",
-    "name": "Blanca of Spain",
-    "born": 1868,
-    "died": 1949,
-    "dynasty": "House of Bourbon",
-    "title": "Archduchess of Austria",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "西班牙的布兰卡"
   },
   {
     "id": "Augustus_II_the_Strong",
@@ -8481,17 +8415,6 @@
     "name_zh": "克莱门斯·文策斯劳斯"
   },
   {
-    "id": "Elizabeth_of_Austria_1436",
-    "name": "Elizabeth of Austria",
-    "born": 1436,
-    "died": 1505,
-    "dynasty": "House of Habsburg",
-    "title": "Queen consort of Poland",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "奥地利的伊丽莎白"
-  },
-  {
     "id": "George_Duke_of_Saxony",
     "name": "George, Duke of Saxony",
     "born": 1471,
@@ -8501,17 +8424,6 @@
     "role": "habsburg",
     "sex": "male",
     "name_zh": "萨克森公爵乔治"
-  },
-  {
-    "id": "Princess_Margherita_of_Bourbon_Parma",
-    "name": "Princess Margherita of Bourbon-Parma",
-    "born": 1847,
-    "died": 1893,
-    "dynasty": "House of Bourbon-Parma",
-    "title": "Princess of Bourbon-Parma",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "波旁-帕尔马的玛格丽塔公主"
   },
   {
     "id": "George_Duke_of_Mecklenburg",
@@ -8525,28 +8437,6 @@
     "name_zh": "梅克伦堡公爵乔治"
   },
   {
-    "id": "Juan_Count_of_Montizon",
-    "name": "Juan, Count of Montizón",
-    "born": 1822,
-    "died": 1887,
-    "dynasty": "House of Bourbon",
-    "title": "Count of Montizón",
-    "role": "habsburg",
-    "sex": "male",
-    "name_zh": "蒙提松伯爵胡安"
-  },
-  {
-    "id": "Philip_I_of_Castile",
-    "name": "Philip I of Castile",
-    "born": 1478,
-    "died": 1506,
-    "dynasty": "House of Habsburg",
-    "title": "King of Castile",
-    "role": "habsburg",
-    "sex": "male",
-    "name_zh": "费利佩一世"
-  },
-  {
     "id": "Josephine_of_Lorraine",
     "name": "Joséphine of Lorraine",
     "born": 1753,
@@ -8556,17 +8446,6 @@
     "role": "habsburg",
     "sex": "female",
     "name_zh": "洛林的约瑟芬"
-  },
-  {
-    "id": "Catherine_Michaela_of_Spain",
-    "name": "Catherine Michaela of Spain",
-    "born": 1567,
-    "died": 1597,
-    "dynasty": "House of Habsburg",
-    "title": "Duchess of Savoy",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "西班牙的卡塔琳娜·米卡埃拉"
   },
   {
     "id": "Catherine_of_Lorraine",
@@ -9339,17 +9218,6 @@
     "name_zh": "普鲁士的安娜"
   },
   {
-    "id": "Archduke_Joseph_Palatine_of_Hungary",
-    "name": "Archduke Joseph, Palatine of Hungary",
-    "born": 1776,
-    "died": 1847,
-    "dynasty": "House of Habsburg-Lorraine",
-    "title": "Palatine of Hungary",
-    "role": "habsburg",
-    "sex": "male",
-    "name_zh": "约瑟夫大公"
-  },
-  {
     "id": "Isabella_of_Bourbon",
     "name": "Isabella of Bourbon",
     "born": 1436,
@@ -9647,17 +9515,6 @@
     "name_zh": "切申的维奥拉"
   },
   {
-    "id": "Kunigunda_of_Slavonia",
-    "name": "Kunigunda of Slavonia",
-    "born": 1245,
-    "died": 1285,
-    "dynasty": "Rurik dynasty",
-    "title": "Queen consort of Bohemia",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "斯拉沃尼亚的库妮贡达"
-  },
-  {
     "id": "Frederick_I,_Elector_of_Saxony",
     "name": "Frederick I, Elector of Saxony",
     "born": 1370,
@@ -9757,28 +9614,6 @@
     "name_zh": "巴伐利亚公爵约翰三世"
   },
   {
-    "id": "Elisabeth_of_Bavaria_(1837–1898)",
-    "name": "Elisabeth of Bavaria",
-    "born": 1837,
-    "died": 1898,
-    "dynasty": "House of Wittelsbach",
-    "title": "Empress of Austria",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "巴伐利亚的伊丽莎白（茜茜公主）"
-  },
-  {
-    "id": "Princess_Anna_of_Saxony_(1903)",
-    "name": "Princess Anna of Saxony",
-    "born": 1903,
-    "died": 1976,
-    "dynasty": "House of Wettin",
-    "title": "Princess of Saxony",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "萨克森的安娜公主"
-  },
-  {
     "id": "Charles_II_Duke_of_Mantua_and_Montferrat",
     "name": "Charles II, Duke of Mantua and Montferrat",
     "born": 1629,
@@ -9788,17 +9623,6 @@
     "role": "habsburg",
     "sex": "male",
     "name_zh": "卡洛二世·贡扎加"
-  },
-  {
-    "id": "Princess_Maria_Immacolata_of_Bourbon_Two_Sicilies",
-    "name": "Princess Maria Immacolata of Bourbon-Two Sicilies",
-    "born": 1844,
-    "died": 1899,
-    "dynasty": "House of Bourbon-Two Sicilies",
-    "title": "Princess of Bourbon-Two Sicilies",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "两西西里的玛丽亚·伊玛库拉塔公主"
   },
   {
     "id": "Ferdinand_IV_Grand_Duke_of_Tuscany",
@@ -9821,28 +9645,6 @@
     "role": "habsburg",
     "sex": "male",
     "name_zh": "弗里德里希大公"
-  },
-  {
-    "id": "Princess_Isabella_of_Croy",
-    "name": "Princess Isabella of Croÿ",
-    "born": 1856,
-    "died": 1931,
-    "dynasty": "House of Croÿ",
-    "title": "Princess of Croÿ",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "克罗伊的伊莎贝拉公主"
-  },
-  {
-    "id": "Blanca_de_Borbon",
-    "name": "Blanca de Borbón",
-    "born": 1868,
-    "died": 1949,
-    "dynasty": "House of Bourbon",
-    "title": "Princess of Spain",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "西班牙的布兰卡公主"
   },
   {
     "id": "Archduchess_Maria_Anna_of_Austria_1882",
@@ -9889,17 +9691,6 @@
     "name_zh": "萨克森的卡尔亲王，库尔兰公爵"
   },
   {
-    "id": "Carlos,_Duke_of_Madrid",
-    "name": "Carlos, Duke of Madrid",
-    "born": 1848,
-    "died": 1909,
-    "dynasty": "House of Bourbon",
-    "title": "Duke of Madrid",
-    "role": "spouse",
-    "sex": "male",
-    "name_zh": "卡洛斯，马德里公爵"
-  },
-  {
     "id": "Philip_III_of_France",
     "name": "Philip III of France",
     "born": 1245,
@@ -9920,17 +9711,6 @@
     "role": "spouse",
     "sex": "female",
     "name_zh": "布拉班特的玛丽，法兰西王后"
-  },
-  {
-    "id": "Archduchess_Maria_Beatrix_of_Austria-Este",
-    "name": "Archduchess Maria Beatrix of Austria-Este",
-    "born": 1824,
-    "died": 1906,
-    "dynasty": "House of Austria-Este",
-    "title": "Archduchess of Austria-Este",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "奥地利-埃斯特的玛丽亚·贝亚特丽克斯"
   },
   {
     "id": "Charles_Louis,_Hereditary_Prince_of_Baden",
@@ -10140,17 +9920,6 @@
     "role": "habsburg",
     "sex": "male",
     "name_zh": "巴登-巴登藩侯路德维希·格奥尔格"
-  },
-  {
-    "id": "Louise_Élisabeth_of_France",
-    "name": "Louise Élisabeth of France",
-    "born": 1727,
-    "died": 1759,
-    "dynasty": "House of Bourbon",
-    "title": "Duchess of Parma",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "法国公主路易丝·伊丽莎白"
   },
   {
     "id": "Archduchess_Maria_Amalia_of_Austria",
@@ -10395,17 +10164,6 @@
     "name_zh": "佛兰德伯爵菲利普亲王"
   },
   {
-    "id": "Louis_XIV_of_France",
-    "name": "Louis XIV of France",
-    "born": 1638,
-    "died": 1715,
-    "dynasty": "House of Bourbon",
-    "title": "King of France",
-    "role": "non_habsburg",
-    "sex": "male",
-    "name_zh": "路易十四"
-  },
-  {
     "id": "Duchess_Maria_Anna_Victoria_of_Bavaria",
     "name": "Duchess Maria Anna Victoria of Bavaria",
     "born": 1660,
@@ -10450,17 +10208,6 @@
     "name_zh": "西班牙的玛丽亚·路易莎，卢卡女公爵"
   },
   {
-    "id": "Louis_XVI_of_France",
-    "name": "Louis XVI of France",
-    "born": 1754,
-    "died": 1793,
-    "dynasty": "House of Bourbon",
-    "title": "King of France",
-    "role": "habsburg",
-    "sex": "male",
-    "name_zh": "法国国王路易十六"
-  },
-  {
     "id": "Louis_Ferdinand,_Dauphin_of_France",
     "name": "Louis Ferdinand, Dauphin of France",
     "born": 1729,
@@ -10492,17 +10239,6 @@
     "role": "habsburg",
     "sex": "male",
     "name_zh": "法国国王路易十五"
-  },
-  {
-    "id": "Archduchess_Anna_of_Austria_(1528–1590)",
-    "name": "Archduchess Anna of Austria",
-    "born": 1528,
-    "died": 1590,
-    "dynasty": "House of Habsburg",
-    "title": "Duchess of Bavaria",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "奥地利的安娜女大公"
   },
   {
     "id": "Maria_Teresa_of_Austria-Este",
@@ -10648,28 +10384,6 @@
     "name_zh": "黑森-达姆施塔特的伊丽莎白·阿玛莉"
   },
   {
-    "id": "Louis_XIII_of_France",
-    "name": "Louis XIII",
-    "born": 1601,
-    "died": 1643,
-    "dynasty": "House of Bourbon",
-    "title": "King of France",
-    "role": "habsburg",
-    "sex": "male",
-    "name_zh": "路易十三"
-  },
-  {
-    "id": "Archduchess_Maria_Theresa_of_Austria_(1816-1867)",
-    "name": "Archduchess Maria Theresa of Austria",
-    "born": 1816,
-    "died": 1867,
-    "dynasty": "House of Habsburg-Lorraine",
-    "title": "Queen consort of the Two Sicilies",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "奥地利的玛丽亚·特蕾莎（1816-1867）"
-  },
-  {
     "id": "Prince_Ludwig_August_of_Saxe-Coburg_and_Gotha",
     "name": "Prince Ludwig August of Saxe-Coburg and Gotha",
     "born": 1845,
@@ -10712,17 +10426,6 @@
     "role": "habsburg",
     "sex": "female",
     "name_zh": "玛丽亚·安娜女大公（1718-1744）"
-  },
-  {
-    "id": "Archduchess_Maria_Theresia_of_Austria-Este",
-    "name": "Archduchess Maria Theresia of Austria-Este",
-    "born": 1849,
-    "died": 1919,
-    "dynasty": "House of Habsburg-Este",
-    "title": "Queen consort of Bavaria",
-    "role": "habsburg",
-    "sex": "female",
-    "name_zh": "奥地利-埃斯特的玛丽亚·特蕾莎"
   },
   {
     "id": "Mathilde_Ludovika_in_Bavaria",
