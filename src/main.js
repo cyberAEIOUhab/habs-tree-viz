@@ -747,6 +747,7 @@ function computeRFull(aId, bId, depth = 0) {
   const contributions = new Map();
 
   for (const [ancestorId, pathsA] of ancestorsA) {
+    if (ancestorId === aId || ancestorId === bId) continue;
     const pathsB = ancestorsB.get(ancestorId);
     if (!pathsB) continue;
 
@@ -807,6 +808,7 @@ function computeR(aId, bId) {
   const candidates = []; // [{ancestorId, pair, fAnc}]
 
   for (const [ancestorId, pathsA] of ancestorsA) {
+    if (ancestorId === aId || ancestorId === bId) continue;
     const pathsB = ancestorsB.get(ancestorId);
     if (!pathsB) continue;
 
