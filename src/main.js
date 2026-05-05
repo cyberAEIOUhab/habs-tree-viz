@@ -131,6 +131,25 @@ let charactersInitialized = false;
 let currentNodeById = null;
 
 /* ============================================================
+   Map module state
+   ============================================================ */
+const MAP_YEARS = [1279, 1530, 1650, 1700, 1715, 1815, 1880, 1914];
+const MAP_DESC = {
+  1279: '鲁道夫一世建立哈布斯堡统治',
+  1530: '查理五世统治鼎盛时期',
+  1650: '三十年战争结束',
+  1700: '西班牙王位继承战争前夕',
+  1715: '西班牙线终结，奥地利线独大',
+  1815: '维也纳会议后的奥地利帝国',
+  1880: '奥匈帝国全盛期',
+  1914: '一战前最后格局',
+};
+let mapInitialized = false;
+let mapData = {};
+let mapSvg, mapG, mapProj, mapPath;
+let mapCurrentYear = 1279;
+
+/* ============================================================
    Load & prepare data
    ============================================================ */
 async function loadData() {
@@ -2163,7 +2182,29 @@ window.addEventListener('resize', () => {
 
   if (svg) svg.attr('width', w).attr('height', h);
 
-  if (nodes && nodes.length) drawEdges(currentTransform);
+  if (ctx && nodes && nodes.length) drawEdges(currentTransform);
+
+  // Resize map projection & SVG
+  if (mapSvg && mapCurrentYear) {
+    mapSvg.attr('width', w).attr('height', h);
+    mapSvg.select('rect').attr('width', w).attr('height', h);
+    fitMapProjection();
+    // Redraw current year
+    const data = mapData[mapCurrentYear];
+    if (data) {
+      const features = (data.features || []).filter(f => {
+        const t = f.geometry && f.geometry.type;
+        return t === 'Polygon' || t === 'MultiPolygon';
+      });
+      mapG.selectAll('path')
+        .data(features)
+        .join('path')
+        .attr('d', mapPath)
+        .attr('fill', d => d.properties && d.properties.habsburg ? '#F5F0E6' : '#2A2A3A')
+        .attr('stroke', d => d.properties && d.properties.habsburg ? '#D4AF37' : '#3A3A4A')
+        .attr('stroke-width', d => d.properties && d.properties.habsburg ? 0.8 : 0.4);
+    }
+  }
 
   // Resize star canvas
   if (starCanvas) {
@@ -2175,6 +2216,263 @@ window.addEventListener('resize', () => {
     if (starCtx) starCtx.setTransform(sdpr, 0, 0, sdpr, 0, 0);
   }
 });
+
+/* ============================================================
+   Map module
+   ============================================================ */
+
+async function initMapPage() {
+  mapSvg = d3.select('#map-svg');
+
+  // Load all GeoJSON files
+  const promises = MAP_YEARS.map(year =>
+    fetch(import.meta.env.BASE_URL + 'maps/europe_' + year + '.geojson')
+      .then(r => r.json())
+      .then(data => { mapData[year] = data; })
+      .catch(err => { console.error('Failed to load europe_' + year + '.geojson:', err); })
+  );
+  await Promise.all(promises);
+
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  mapSvg.attr('width', w).attr('height', h);
+
+  // Ocean background
+  mapSvg.append('rect')
+    .attr('width', w).attr('height', h)
+    .attr('fill', '#0A1628');
+
+  // Glow filter for hover
+  const defs = mapSvg.append('defs');
+  const glowFilter = defs.append('filter').attr('id', 'map-glow');
+  glowFilter.append('feGaussianBlur').attr('stdDeviation', '1.5').attr('result', 'blur');
+  const merge = glowFilter.append('feMerge');
+  merge.append('feMergeNode').attr('in', 'blur');
+  merge.append('feMergeNode').attr('in', 'SourceGraphic');
+
+  mapProj = d3.geoMercator().center([13, 47]);
+  fitMapProjection();
+
+  mapG = mapSvg.append('g').attr('class', 'map-features');
+
+  buildSlider();
+  renderMap(mapCurrentYear);
+  mapInitialized = true;
+}
+
+function fitMapProjection() {
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  const scale = Math.min(w / 2.5, h / 1.2);
+  mapProj.scale(scale).translate([w / 2, h / 2]);
+  mapPath = d3.geoPath().projection(mapProj);
+}
+
+function buildSlider() {
+  const slider = document.getElementById('map-slider');
+  const dotsContainer = document.getElementById('map-slider-dots');
+
+  const trackPad = 20;
+  const trackW = slider.clientWidth - trackPad * 2;
+
+  MAP_YEARS.forEach((year, i) => {
+    const frac = i / (MAP_YEARS.length - 1);
+    const left = trackPad + frac * trackW;
+
+    const dot = document.createElement('div');
+    dot.className = 'map-slider-dot';
+    dot.style.left = left + 'px';
+    dot.dataset.year = year;
+    if (year === mapCurrentYear) dot.classList.add('active');
+
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (year !== mapCurrentYear) {
+        mapCurrentYear = year;
+        renderMap(year);
+      }
+    });
+
+    dotsContainer.appendChild(dot);
+  });
+
+  updateSliderHandle();
+
+  // Click on track area → snap to nearest year
+  slider.addEventListener('click', (e) => {
+    if (e.target !== slider && e.target.id !== 'map-slider-track') return;
+    const rect = slider.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const frac = Math.max(0, Math.min(1, (x - trackPad) / trackW));
+    const idx = Math.round(frac * (MAP_YEARS.length - 1));
+    const year = MAP_YEARS[idx];
+    if (year !== mapCurrentYear) {
+      mapCurrentYear = year;
+      renderMap(year);
+    }
+  });
+
+  // Dragging the handle (mouse + touch)
+  let dragging = false;
+  const handle = document.getElementById('map-slider-handle');
+
+  function dragFromClientX(clientX) {
+    const rect = slider.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const frac = Math.max(0, Math.min(1, (x - trackPad) / trackW));
+    const idx = Math.round(frac * (MAP_YEARS.length - 1));
+    const year = MAP_YEARS[idx];
+    if (year !== mapCurrentYear) {
+      mapCurrentYear = year;
+      renderMap(year);
+    }
+  }
+
+  handle.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    dragging = true;
+  });
+
+  handle.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    dragging = true;
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    dragFromClientX(e.clientX);
+  });
+
+  document.addEventListener('touchmove', (e) => {
+    if (!dragging) return;
+    dragFromClientX(e.touches[0].clientX);
+  });
+
+  document.addEventListener('mouseup', () => {
+    dragging = false;
+  });
+
+  document.addEventListener('touchend', () => {
+    dragging = false;
+  });
+}
+
+function updateSliderHandle() {
+  const handle = document.getElementById('map-slider-handle');
+  const slider = document.getElementById('map-slider');
+  const trackPad = 20;
+  const trackW = slider.clientWidth - trackPad * 2;
+  const idx = MAP_YEARS.indexOf(mapCurrentYear);
+  const frac = idx / (MAP_YEARS.length - 1);
+  handle.style.left = (trackPad + frac * trackW) + 'px';
+}
+
+function updateSliderActive(year) {
+  document.querySelectorAll('.map-slider-dot').forEach(dot => {
+    dot.classList.toggle('active', +dot.dataset.year === year);
+  });
+  updateSliderHandle();
+}
+
+let mapRenderId = 0;
+
+function renderMap(year) {
+  const data = mapData[year];
+  if (!data) return;
+
+  // Update year label (immediately)
+  document.getElementById('map-year-label').innerHTML =
+    '<span class="map-year-num">' + year + '</span>' + MAP_DESC[year];
+
+  updateSliderActive(year);
+
+  // Filter to only polygon features (exclude Point, LineString, null geometry)
+  const features = (data.features || []).filter(f => {
+    const t = f.geometry && f.geometry.type;
+    return t === 'Polygon' || t === 'MultiPolygon';
+  });
+
+  // Cancel any pending render
+  const thisRender = ++mapRenderId;
+
+  // Fade out old paths
+  mapG.selectAll('path')
+    .transition().duration(300).attr('opacity', 0).remove();
+
+  // Fade in new paths after old ones are gone
+  setTimeout(() => {
+    if (thisRender !== mapRenderId) return; // stale
+    mapG.selectAll('path')
+      .data(features)
+      .join('path')
+      .attr('d', mapPath)
+      .attr('fill', d => d.properties && d.properties.habsburg ? '#F5F0E6' : '#2A2A3A')
+      .attr('stroke', d => d.properties && d.properties.habsburg ? '#D4AF37' : '#3A3A4A')
+      .attr('stroke-width', d => d.properties && d.properties.habsburg ? 0.8 : 0.4)
+      .attr('opacity', 0)
+      .on('mouseenter', function (event, d) {
+        const name = (d.properties && d.properties.NAME) || '';
+        if (!name) return;
+        d3.select('#map-tooltip')
+          .html(name)
+          .classed('visible', true);
+        d3.select(this)
+          .attr('stroke-width', d.properties && d.properties.habsburg ? 1.8 : 1)
+          .attr('filter', 'url(#map-glow)');
+      })
+      .on('mousemove', function (event) {
+        const tooltipEl = document.getElementById('map-tooltip');
+        const rect = tooltipEl.getBoundingClientRect();
+        let tx = event.clientX + 14;
+        let ty = event.clientY - 10;
+        if (tx + rect.width > window.innerWidth - 8) tx = event.clientX - rect.width - 14;
+        if (ty + rect.height > window.innerHeight - 8) ty = window.innerHeight - rect.height - 8;
+        if (ty < 8) ty = 8;
+        d3.select('#map-tooltip')
+          .style('left', tx + 'px')
+          .style('top', ty + 'px');
+      })
+      .on('mouseleave', function () {
+        d3.select('#map-tooltip').classed('visible', false);
+        d3.select(this)
+          .attr('stroke-width', d => d.properties && d.properties.habsburg ? 0.8 : 0.4)
+          .attr('filter', null);
+      })
+      .transition()
+      .duration(300)
+      .attr('opacity', 1);
+  }, 310);
+}
+
+function switchToMap() {
+  if (_switching) return;
+  _switching = true;
+
+  const homePage = document.getElementById('home-page');
+  const mapPage = document.getElementById('map-page');
+
+  homePage.classList.add('hidden');
+  stopStarAnimation();
+
+  setTimeout(async () => {
+    try {
+      mapPage.classList.add('visible');
+
+      if (!mapInitialized) {
+        await initMapPage();
+      }
+    } catch (err) {
+      console.error('Map init error:', err);
+      document.getElementById('map-year-label').textContent = '加载失败，请刷新重试';
+    }
+
+    _switching = false;
+  }, 600);
+}
+
+function switchToHomeFromMap() {
+  switchToHome();
+}
 
 /* ============================================================
    Bootstrap
@@ -2225,6 +2523,16 @@ window.addEventListener('resize', () => {
     // Detail back button → switch to characters list
     document.getElementById('detail-back-btn').addEventListener('click', () => {
       switchToCharactersFromDetail();
+    });
+
+    // Map button → switch to map page
+    document.getElementById('map-btn').addEventListener('click', () => {
+      switchToMap();
+    });
+
+    // Map back button → switch to homepage
+    document.getElementById('map-back-btn').addEventListener('click', () => {
+      switchToHomeFromMap();
     });
 
   } catch (err) {
@@ -2290,6 +2598,7 @@ function switchToHome() {
   historyPage.classList.remove('visible');
   document.getElementById('characters-page').classList.remove('visible');
   document.getElementById('character-detail-page').classList.remove('visible');
+  document.getElementById('map-page').classList.remove('visible');
   backBtn.classList.remove('visible');
 
   setTimeout(() => {

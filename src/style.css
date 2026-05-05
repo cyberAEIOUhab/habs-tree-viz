@@ -186,7 +186,8 @@ html, body {
 /* Explore button */
 .explore-btn,
 .history-btn,
-.characters-btn {
+.characters-btn,
+.map-btn {
   font-family: 'Cinzel', Georgia, serif;
   font-weight: 600;
   font-size: 15px;
@@ -206,7 +207,8 @@ html, body {
 }
 .explore-btn:active,
 .history-btn:active,
-.characters-btn:active {
+.characters-btn:active,
+.map-btn:active {
   transform: scale(0.97);
 }
 
@@ -226,6 +228,15 @@ html, body {
 .history-btn:hover {
   background: #6b8fad;
   color: #0a0e1a;
+}
+
+.map-btn {
+  border-color: #2D6A4F;
+  color: #2D6A4F;
+}
+.map-btn:hover {
+  background: #2D6A4F;
+  color: #F5F0E6;
 }
 
 /* Loading overlay */
@@ -1451,4 +1462,184 @@ html, body {
   text-align: center;
   margin-top: 8px;
   font-style: italic;
+}
+
+/* ========== Map page ========== */
+#map-page {
+  position: fixed;
+  inset: 0;
+  z-index: 8500;
+  background: #0A1628;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+#map-page.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#map-back-btn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 8600;
+  padding: 7px 16px;
+  background: rgba(10, 22, 40, 0.9);
+  border: 1px solid rgba(45, 106, 79, 0.25);
+  border-radius: 6px;
+  color: #8fa8c8;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 14px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+#map-back-btn:hover {
+  border-color: rgba(45, 106, 79, 0.5);
+  color: #2D6A4F;
+  background: rgba(45, 106, 79, 0.08);
+}
+
+#map-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Map tooltip */
+.map-tooltip {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0;
+  background: rgba(10, 14, 26, 0.94);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 6px;
+  color: #d0c8b8;
+  font-size: 13px;
+  padding: 8px 14px;
+  z-index: 8700;
+  transition: opacity 0.12s;
+  white-space: nowrap;
+}
+.map-tooltip.visible {
+  opacity: 1;
+}
+
+/* Year label above slider */
+#map-year-label {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8600;
+  color: #F5F0E6;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 17px;
+  letter-spacing: 1px;
+  text-align: center;
+  pointer-events: none;
+}
+#map-year-label .map-year-num {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 22px;
+  color: #D4AF37;
+  margin-right: 8px;
+}
+
+/* Slider */
+#map-slider {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8600;
+  width: 600px;
+  max-width: 88vw;
+  height: 48px;
+  cursor: pointer;
+}
+
+#map-slider-track {
+  position: absolute;
+  top: 23px;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+#map-slider-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.map-slider-dot {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.map-slider-dot:hover {
+  background: rgba(45, 106, 79, 0.6);
+  border-color: #2D6A4F;
+}
+.map-slider-dot.active {
+  background: #2D6A4F;
+  border-color: #D4AF37;
+  width: 14px;
+  height: 14px;
+  box-shadow: 0 0 10px rgba(45, 106, 79, 0.5);
+}
+
+#map-slider-handle {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #2D6A4F;
+  border: 2px solid #D4AF37;
+  box-shadow: 0 0 14px rgba(45, 106, 79, 0.6);
+  pointer-events: none;
+  transition: left 0.2s ease;
+  z-index: 1;
+}
+
+/* Map legend */
+#map-legend {
+  position: fixed;
+  bottom: 120px;
+  right: 20px;
+  z-index: 8600;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 12px;
+  color: #8fa8c8;
+}
+.map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.map-legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  border: 1px solid;
 }
